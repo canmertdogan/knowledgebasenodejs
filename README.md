@@ -4,7 +4,7 @@ Ludmila hanım'ın projesi için git reposu.
 ###İlerleme Raporu
 
 +**Filtreleme sistemi düzgün çalışıyor ve iyileştirildi.**
-+**Arama fonksiyonu eklendi. (Sanırım biraz daha iyileştirilmesi gerek.)**
++**Arama fonksiyonu eklendi. (Kesinlikle iyileştirilmesi gerek.)**
 +**Sonuç penceresi eklendi.**
 +**Herhangi bir filtreleme gerçekleştiğinde ilgili iller haritada yeşil olarak işaretleniyor. Yaıplan aramalar da dahil.**
 +**Birkaç örnek veri eklendi. **
