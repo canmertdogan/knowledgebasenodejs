@@ -1,13 +1,18 @@
 # Ludmla Hanım Proje
 Ludmila hanım'ın projesi için git reposu.
 
-İlerleme Raporu
+###İlerleme Raporu
 
--Filtreleme sistemi düzgün çalışıyor ve iyileştirildi.
--Arama fonksiyonu eklendi. (Sanırım biraz daha iyileştirilmesi gerek.)
--Sonuç penceresi eklendi.
--Herhangi bir filtreleme gerçekleştiğinde ilgili iller haritada yeşil olarak işaretleniyor. Yaıplan aramalar da dahil.
--Birkaç örnek veri eklendi. 
++**Filtreleme sistemi düzgün çalışıyor ve iyileştirildi.**
++**Arama fonksiyonu eklendi. (Sanırım biraz daha iyileştirilmesi gerek.)**
++**Sonuç penceresi eklendi.**
++**Herhangi bir filtreleme gerçekleştiğinde ilgili iller haritada yeşil olarak işaretleniyor. Yaıplan aramalar da dahil.**
++**Birkaç örnek veri eklendi. **
+
+### Soru işaretleri
++"Navigasyona ne ekleyeceğiz?"
++"Veriyi kod ile PDFden scrape etmenin bir yolunu bulursak daha iyi olacak. Elle girmek istemiyorum herşeyi açık konuşayım."
 
 Vaktim olduğunca bu kadar yapabildim. 
-Daha fazla kişi ile çalışabilirsek daha iyi olur aslında.
+Kodu olabildiğince basit tutmaya çalıştım.
+Daha fazla kişi ile çalışabilirsek daha hızlı bir ilerleme kaydedebiliriz.
