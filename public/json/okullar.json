@@ -1,0 +1,64 @@
+{
+  "centers": [
+    {
+      "name": "St. Petersburg Russian School of Istanbul",
+      "meta": {
+        "type": "private",
+        "curriculum": "Russian",
+        "age_range": "3-18"
+      },
+      "address": "Mesrutiyet Mah., Istiklal Cad. No:221, 34433 Beyoglu, Istanbul, Turkey",
+      "phone": "+90 212 293 55 00",
+      "email": "info@spris.com.tr",
+      "plaka_kodu": "34"
+    },
+    {
+      "name": "Russian School of Antalya",
+      "meta": {
+        "type": "private",
+        "curriculum": "Russian",
+        "age_range": "3-18"
+      },
+      "address": "Kaleici Mah., Atatürk Cad. No:34, 07100 Muratpasa, Antalya, Turkey",
+      "phone": "+90 242 241 49 00",
+      "email": "info@russchool-antalya.com",
+      "plaka_kodu": "07"
+    },
+    {
+      "name": "Russian School of Trabzon",
+      "meta": {
+        "type": "private",
+        "curriculum": "Russian",
+        "age_range": "3-18"
+      },
+      "address": "Kocamankaya Mah., Maraş Cad. No:11, 61040 Ortahisar, Trabzon, Turkey",
+      "phone": "+90 462 321 35 00",
+      "email": "info@russchool-trabzon.com",
+      "plaka_kodu": "61"
+    },
+    {
+      "name": "Russian School of Izmir",
+      "meta": {
+        "type": "private",
+        "curriculum": "Russian",
+        "age_range": "3-18"
+      },
+      "address": "Kemeralti Mah., 883 Sokak No:10, 35220 Konak, Izmir, Turkey",
+      "phone": "+90 232 484 63 00",
+      "email": "info@russchool-izmir.com",
+      "plaka_kodu": "35"
+    },
+    {
+      "name": "Russian School of Ankara",
+      "meta": {
+        "type": "private",
+        "curriculum": "Russian",
+        "age_range": "3-18"
+      },
+      "address": "Emek Mah., 172 Sokak No:4, 06520 Çankaya, Ankara, Turkey",
+      "phone": "+90 312 433 07 00",
+      "email": "info@russchool-ankara.com",
+      "plaka_kodu": "06"
+    }
+  ]
+}

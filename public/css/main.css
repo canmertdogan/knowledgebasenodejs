@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700');
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background-color:#ddd;
+}
+
+.site-header {
+  margin-bottom: 40px;
+}
+
+.site-header__title {
+    text-align: center;
+    background: #444;
+    padding: 15px;
+    border-radius: 4px;
+    color: #9c9c9c;
+    font-size: 28px;
+  }
+
+.site-header__title__light {
+      font-weight: 300;
+      color: #adadad;
+    }
+
+.map-container {
+    padding: 2%;
+    padding-top: 6%;
+    width: 70%;
+    margin-left: 12%;
+    margin-right: 35%;
+    float: left;
+    position: fixed;
+    
+    
+}
+
+.city {
+  fill: #2247aa;
+  fill-opacity: 1;
+  stroke:white;
+  stroke-opacity: 1;
+  stroke-width:0.5;
+  -webkit-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+  cursor: pointer;
+  
+}
+
+.city:hover {
+     fill: #df4141;
+}
+
+.selected {
+    fill: green;
+  }
+.show-city-name {
+  background-color: #f31212;
+  border-radius: 10px;
+  color: #fff;
+  position: absolute;
+  padding: 15px 25px;
+  
+  visibility: hidden;
+  font-size: 16px;
+  
+}
+
+.show-city-name--active {
+    opacity: 1;
+    visibility: visible;
+    margin: -170px;
+  }
+
+.site-footer {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 40px;
+  color: #ababab;
+
+}
+
+.site-footer__link {
+    color: #3498db;
+    font-weight: 700;
+  }
+
+  div.scroll {
+    right: 0px;
+    width: 370px;
+    height: 550px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}

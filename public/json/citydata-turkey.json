@@ -1,0 +1,409 @@
+{
+    "iller": [
+      {
+        "il_adi": "Adana",
+        "plaka_kodu": "01",
+        "rusca_adi": "Адана"
+      },
+      {
+        "il_adi": "Adıyaman",
+        "plaka_kodu": "02",
+        "rusca_adi": "Адыяман"
+      },
+      {
+        "il_adi": "Afyonkarahisar",
+        "plaka_kodu": "03",
+        "rusca_adi": "Афьонкарахисар"
+      },
+      {
+        "il_adi": "Ağrı",
+        "plaka_kodu": "04",
+        "rusca_adi": "Агры"
+      },
+      {
+        "il_adi": "Amasya",
+        "plaka_kodu": "05",
+        "rusca_adi": "Амасья"
+      },
+      {
+        "il_adi": "Ankara",
+        "plaka_kodu": "06",
+        "rusca_adi": "Анкара"
+      },
+      {
+        "il_adi": "Antalya",
+        "plaka_kodu": "07",
+        "rusca_adi": "Анталья"
+      },
+      {
+        "il_adi": "Artvin",
+        "plaka_kodu": "08",
+        "rusca_adi": "Артвин"
+      },
+      {
+        "il_adi": "Aydın",
+        "plaka_kodu": "09",
+        "rusca_adi": "Айдын"
+      },
+      {
+        "il_adi": "Balıkesir",
+        "plaka_kodu": "10",
+        "rusca_adi": "Балыкесир"
+      },
+      {
+        "il_adi": "Bilecik",
+        "plaka_kodu": "11",
+        "rusca_adi": "Биледжик"
+      },
+      {
+        "il_adi": "Bingöl",
+        "plaka_kodu": "12",
+        "rusca_adi": "Бингёль"
+      },
+      {
+        "il_adi": "Bitlis",
+        "plaka_kodu": "13",
+        "rusca_adi": "Битлис"
+      },
+      {
+        "il_adi": "Bolu",
+        "plaka_kodu": "14",
+        "rusca_adi": "Болу"
+      },
+      {
+        "il_adi": "Burdur",
+        "plaka_kodu": "15",
+        "rusca_adi": "Бурдур"
+      },
+      {
+        "il_adi": "Bursa",
+        "plaka_kodu": "16",
+        "rusca_adi": "Бурса"
+      },
+      {
+        "il_adi": "Çanakkale",
+        "plaka_kodu": "17",
+        "rusca_adi": "Чанаккале"
+      },
+      {
+        "il_adi": "Çankırı",
+        "plaka_kodu": "18",
+        "rusca_adi": "Чанкыры"
+      },
+      {
+        "il_adi": "Çorum",
+        "plaka_kodu": "19",
+        "rusca_adi": "Чорум"
+      },
+      {
+        "il_adi": "Denizli",
+        "plaka_kodu": "20",
+        "rusca_adi": "Денизли"
+      },
+      {
+        "il_adi": "Diyarbakır",
+        "plaka_kodu": "21",
+        "rusca_adi": "Диярбакыр"
+      },
+      {
+        "il_adi": "Edirne",
+        "plaka_kodu": "22",
+        "rusca_adi": "Эдирне"
+      },
+      {
+        "il_adi": "Elazığ",
+        "plaka_kodu": "23",
+        "rusca_adi": "Элазыг"
+      },
+      {
+        "il_adi": "Erzincan",
+        "plaka_kodu": "24",
+        "rusca_adi": "Эрзинджан"
+      },
+      {
+        "il_adi": "Erzurum",
+        "plaka_kodu": "25",
+        "rusca_adi": "Эрзурум"
+      },
+      {
+        "il_adi": "Eskişehir",
+        "plaka_kodu": "26",
+        "rusca_adi": "Эскишехир"
+      },
+      {
+        "il_adi": "Gaziantep",
+        "plaka_kodu": "27",
+        "rusca_adi": "Газиантеп"
+      },
+      {
+        "il_adi": "Giresun",
+        "plaka_kodu": "28",
+        "rusca_adi": "Гиресун"
+      },
+      {
+        "il_adi": "Gümüşhane",
+        "plaka_kodu": "29",
+        "rusca_adi": "Гюмюшхане"
+      },
+      {
+        "il_adi": "Hakkari",
+        "plaka_kodu": "30",
+        "rusca_adi": "Хаккари"
+      },
+      {
+        "il_adi": "Hatay",
+        "plaka_kodu": "31",
+        "rusca_adi": "Хатай"
+      },
+      {
+        "il_adi": "Isparta",
+        "plaka_kodu": "32",
+        "rusca_adi": "Испарта"
+      },
+      {
+        "il_adi": "Mersin",
+        "plaka_kodu": "33",
+        "rusca_adi": "Мерсин"
+      },
+      {
+        "il_adi": "İstanbul",
+        "plaka_kodu": "34",
+        "rusca_adi": "Стамбул"
+      },
+      {
+        "il_adi": "İzmir",
+        "plaka_kodu": "35",
+        "rusca_adi": "Измир"
+      },
+      {
+        "il_adi": "Kars",
+        "plaka_kodu": "36",
+        "rusca_adi": "Карс"
+      },
+      {
+        "il_adi": "Kastamonu",
+        "plaka_kodu": "37",
+        "rusca_adi": "Кастамону"
+      },
+      {
+        "il_adi": "Kayseri",
+        "plaka_kodu": "38",
+        "rusca_adi": "Кайсери"
+      },
+      {
+        "il_adi": "Kırklareli",
+        "plaka_kodu": "39",
+        "rusca_adi": "Кыркларели"
+      },
+      {
+        "il_adi": "Kırşehir",
+        "plaka_kodu": "40",
+        "rusca_adi": "Кыршехир"
+      },
+      {
+        "il_adi": "Kocaeli",
+        "plaka_kodu": "41",
+        "rusca_adi": "Коджаэли"
+      },
+      {
+        "il_adi": "Konya",
+        "plaka_kodu": "42",
+        "rusca_adi": "Конья"
+      },
+      {
+        "il_adi": "Kütahya",
+        "plaka_kodu": "43",
+        "rusca_adi": "Кутахья"
+      },
+      {
+        "il_adi": "Malatya",
+        "plaka_kodu": "44",
+        "rusca_adi": "Малатья"
+      },
+      {
+        "il_adi": "Manisa",
+        "plaka_kodu": "45",
+        "rusca_adi": "Маниса"
+      },
+      {
+        "il_adi": "Kahramanmaraş",
+        "plaka_kodu": "46",
+        "rusca_adi": "Караманмараш"
+      },
+      {
+        "il_adi": "Mardin",
+        "plaka_kodu": "47",
+        "rusca_adi": "Мардин"
+      },
+      {
+        "il_adi": "Muğla",
+        "plaka_kodu": "48",
+        "rusca_adi": "Мугла"
+      },
+      {
+        "il_adi": "Muş",
+        "plaka_kodu": "49",
+        "rusca_adi": "Муш"
+      },
+      {
+        "il_adi": "Nevşehir",
+        "plaka_kodu": "50",
+        "rusca_adi": "Невшехир"
+      },
+      {
+        "il_adi": "Niğde",
+        "plaka_kodu": "51",
+        "rusca_adi": "Нигде"
+      },
+      {
+        "il_adi": "Ordu",
+        "plaka_kodu": "52",
+        "rusca_adi": "Орду"
+      },
+      {
+        "il_adi": "Rize",
+        "plaka_kodu": "53",
+        "rusca_adi": "Ризе"
+      },
+      {
+        "il_adi": "Sakarya",
+        "plaka_kodu": "54",
+        "rusca_adi": "Сакарья"
+      },
+      {
+        "il_adi": "Samsun",
+        "plaka_kodu": "55",
+        "rusca_adi": "Самсун"
+      },
+      {
+        "il_adi": "Siirt",
+        "plaka_kodu": "56",
+        "rusca_adi": "Сиарт"
+      },
+      {
+        "il_adi": "Sinop",
+        "plaka_kodu": "57",
+        "rusca_adi": "Синоп"
+      },
+      {
+        "il_adi": "Sivas",
+        "plaka_kodu": "58",
+        "rusca_adi": "Сивас"
+      },
+      {
+        "il_adi": "Tekirdağ",
+        "plaka_kodu": "59",
+        "rusca_adi": "Текирдаг"
+      },
+      {
+        "il_adi": "Tokat",
+        "plaka_kodu": "60",
+        "rusca_adi": "Токат"
+      },
+      {
+        "il_adi": "Trabzon",
+        "plaka_kodu": "61",
+        "rusca_adi": "Трабзон"
+      },
+      {
+        "il_adi": "Tunceli",
+        "plaka_kodu": "62",
+        "rusca_adi": "Тунджели"
+      },
+      {
+        "il_adi": "Şanlıurfa",
+        "plaka_kodu": "63",
+        "rusca_adi": "Шанлыурфа"
+      },
+      {
+        "il_adi": "Uşak",
+        "plaka_kodu": "64",
+        "rusca_adi": "Ушак"
+      },
+      {
+        "il_adi": "Van",
+        "plaka_kodu": "65",
+        "rusca_adi": "Ван"
+      },
+      {
+        "il_adi": "Yozgat",
+        "plaka_kodu": "66",
+        "rusca_adi": "Йозгат"
+      },
+      {
+        "il_adi": "Zonguldak",
+        "plaka_kodu": "67",
+        "rusca_adi": "Зонгулдак"
+      },
+      {
+        "il_adi": "Aksaray",
+        "plaka_kodu": "68",
+        "rusca_adi": "Аксарай"
+      },
+      {
+        "il_adi": "Bayburt",
+        "plaka_kodu": "69",
+        "rusca_adi": "Байбурт"
+      },
+      {
+        "il_adi": "Karaman",
+        "plaka_kodu": "70",
+        "rusca_adi": "Караман"
+      },
+      {
+        "il_adi": "Kırıkkale",
+        "plaka_kodu": "71",
+        "rusca_adi": "Кырыккале"
+      },
+      {
+        "il_adi": "Batman",
+        "plaka_kodu": "72",
+        "rusca_adi": "Батман"
+      },
+      {
+        "il_adi": "Şırnak",
+        "plaka_kodu": "73",
+        "rusca_adi": "Шырнак"
+      },
+      {
+        "il_adi": "Bartın",
+        "plaka_kodu": "74",
+        "rusca_adi": "Бартын"
+      },
+      {
+        "il_adi": "Ardahan",
+        "plaka_kodu": "75",
+        "rusca_adi": "Ардахан"
+      },
+      {
+        "il_adi": "Iğdır",
+        "plaka_kodu": "76",
+        "rusca_adi": "Игдыр"
+      },
+      {
+        "il_adi": "Yalova",
+        "plaka_kodu": "77",
+        "rusca_adi": "Ялова"
+      },
+      {
+        "il_adi": "Karabük",
+        "plaka_kodu": "78",
+        "rusca_adi": "Карабюк"
+      },
+      {
+        "il_adi": "Kilis",
+        "plaka_kodu": "79",
+        "rusca_adi": "Килис"
+      },
+      {
+        "il_adi": "Osmaniye",
+        "plaka_kodu": "80",
+        "rusca_adi": "Османие"
+      },
+      {
+        "il_adi": "Düzce",
+        "plaka_kodu": "81",
+        "rusca_adi": "Дюздже"
+      }
+    ]
+  }
