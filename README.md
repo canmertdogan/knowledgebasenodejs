@@ -3,15 +3,15 @@ Ludmila hanım'ın projesi için git reposu.
 
 ###İlerleme Raporu
 
-+**Filtreleme sistemi düzgün çalışıyor ve iyileştirildi.** /
++**Filtreleme sistemi düzgün çalışıyor ve iyileştirildi.** 
 
-+**Arama fonksiyonu eklendi. (Kesinlikle iyileştirilmesi gerek.)** /
++**Arama fonksiyonu eklendi. (Kesinlikle iyileştirilmesi gerek.)** 
 
-+**Sonuç penceresi eklendi.**/
++**Sonuç penceresi eklendi.**
 
-+**Herhangi bir filtreleme gerçekleştiğinde ilgili iller haritada yeşil olarak işaretleniyor. Yaıplan aramalar da dahil.**/
++**Herhangi bir filtreleme gerçekleştiğinde ilgili iller haritada yeşil olarak işaretleniyor. Yaıplan aramalar da dahil.**
 
-+**Birkaç örnek veri eklendi. **/
++**Birkaç örnek veri eklendi.**
 
 ### Soru işaretleri
 +"Navigasyona ne ekleyeceğiz?"
