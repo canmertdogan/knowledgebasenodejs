@@ -1,0 +1,192 @@
+<head>
+    <title>Rus Evi Ankara</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  </head>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="css/main.css" type="text/css" rel=stylesheet />
+  
+  <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" aria-label="Thirteenth navbar example"
+    style="position:fixed; width:100%; z-index: 1500;">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
+        aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+        <a class="navbar-brand col-lg-3 me-0" href="#">АДМИНИСТРАТОР</a>
+        <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#">Dernekler</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Hizmet Alanları</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Konsolosluklar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Eğitim Kurumları</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Язык</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Турецкий - Türkçe</a></li>
+              <li><a class="dropdown-item" href="#">Английский - English</a></li>
+              <li><a class="dropdown-item" href="#">Русский</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+          <input class="form-control" id="search-input" type="search" placeholder="Search" aria-label="Аra"
+            style="width:250px; margin-right:8px;">
+          <button class="btn btn-primary" id="search-button" onclick="resetSelected(); showSidebar()">Поиск</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <br><br>
+  
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary yoa382 "
+    style="width: 380px; z-index: 8000; position: absolute; margin: 16px; border-radius: 6px; visibility:hidden; right: 0;">
+  
+    <div href="/"
+      class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
+      <a href="#" onclick="hideSidebar()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+          <path fill="#000000"
+            d="M20.727 5.798c-.78-.78-2.048-.78-2.828 0l-5.899 5.899-5.899-5.899c-.78-.78-2.048-.78-2.828 0-.78.78-.78 2.048 0 2.828l5.899 5.899-5.899 5.899c-.78.78-.78 2.048 0 2.828.39.39.902.586 1.414.586s1.024-.196 1.414-.586l5.899-5.899 5.899 5.899c.39.39.902.586 1.414.586s1.024-.196 1.414-.586c.78-.78.78-2.048 0-2.828l-5.899-5.899 5.899-5.899c.78-.78.78-2.048 0-2.828z" />
+        </svg>
+      </a>
+      <span class="fs-5 fw-semibold">Sonuçlar:</span>
+    </div>
+    <div class="list-group liste-grup list-group-flush border-bottom scrollarea scroll" id="results-list">
+  
+  
+  
+  
+    </div>
+
+  
+  
+  
+  
+  </div>
+  
+  <body>
+  
+  
+  
+  
+  
+ 
+  
+    <div id="container-fluid">
+      <div id="title-admin">
+          <h3 id="container-title">Veri ekle</h3>
+          <hr>
+          <form>
+            <!-- Normal Text Inputs -->
+            <div class="mb-3">
+             
+              <input type="text" class="form-control" id="input1" name="input1" placeholder="Eklenecek olan kurumun adı">
+            </div>
+            <div class="mb-3">
+              
+              <input type="text" class="form-control" id="input2" name="input2" placeholder="Eklenecek olan kurumun adresi">
+            </div>
+            <div class="mb-3">
+            <input type="text" class="form-control" id="input2" name="input2" placeholder="Eklenecek olan kurumun telefon numarası">
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="input2" name="input2" placeholder="Eklenecek olan kurumun E-Mail Adresi">
+          </div>
+            
+            
+            <!-- Dropdowns -->
+            <div class="mb-3">
+            
+              <select class="form-select" id="dropdown1" name="dropdown1">
+                <option selected>Hizmet Alanı Seçiniz</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+              </select>
+            </div>
+            <div class="mb-3">
+            
+              <select class="form-select" id="dropdown2" name="dropdown2">
+                <option selected>Şehir Seçiniz</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+              </select>
+            </div>
+            
+            <!-- Big Text Box -->
+            <div class="mb-3">
+              
+              <textarea class="form-control" id="bigTextBox" name="bigTextBox" rows="5" placeholder="Kurum Hakkındaki Detaylar"></textarea>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Verileri Kaydet</button>
+          </form>
+      </div>
+    </div>
+
+
+    <div id="container-fluid">
+      <div id="title-admin">
+          <h3 id="container-title">Veri Kaldır</h3>
+          <hr>
+          <form>
+           
+            
+            
+            <!-- Dropdowns -->
+            <div class="mb-3">
+            
+              <select class="form-select" id="dropdown1" name="dropdown1">
+                <option selected>Hizmet Alanı Seçiniz</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+              </select>
+            </div>
+            <div class="mb-3">
+            
+              <select class="form-select" id="dropdown2" name="dropdown2">
+                <option selected>Şehir Seçiniz</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+              </select>
+            </div>
+            
+            <!-- Big Text Box -->
+            <div class="mb-3">
+              
+              <textarea class="form-control" id="bigTextBox" name="bigTextBox" rows="5" placeholder="Kurum Hakkındaki Detaylar"></textarea>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Verileri Kaydet</button>
+          </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  </body>
+  
+  <script type="text/javascript" src="js/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"
+    integrity="sha512-VK2zcvntEufaimc+efOYi622VN5ZacdnufnmX7zIhCPmjhKnOi9ZDMtg1/ug5l183f19gG1/cBstPO4D8N/Img=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
