@@ -108,6 +108,7 @@ $(document).ready(function () {
             });
 
             displayResults(results);
+            hohogo(results);
           }
         }
       }).fail(function (hataatis) {
@@ -160,7 +161,56 @@ $(document).ready(function () {
       });
     }
   }
+
+
+function hohogo(results) {
+  var sidebar = $("#results-list");
+  sidebar.empty();
+
+  if (results.length === 0) {
+    sidebar.append("<li>Arama sonucu bulunamadı.</li>");
+  } else {
+    $.each(results, function (index, result) {
+      var listItem = $("<li>")
+        .addClass("list-group-item list-group-item-action py-3 lh-sm")
+        .attr("aria-current", "true");
+
+      var contentContainer = $("<div>")
+        .addClass("d-flex w-100 align-items-center justify-content-between")
+        .appendTo(listItem);
+
+      var name = $("<strong>")
+        .addClass("mb-1")
+        .text(result.name)
+        .appendTo(contentContainer);
+
+      var city = $("<small>").text(result.il_adi).appendTo(contentContainer);
+
+      var details = $("<div>")
+        .addClass("col-10 mb-1 small")
+        .appendTo(listItem);
+
+      $("<p style='font-size:14px;'>")
+        .html(
+          "<br><strong>Adres:</strong> " +
+          result.address +
+          "<br><br><strong>Telefon:</strong> " +
+          result.phone +
+          "<br><strong>Email:</strong> " +
+          result.email +
+          "<br><button class=\"btn btn-danger\" id=\"jsonDataRemove\">Veriyi yok et!</button>"
+          
+        )
+        .appendTo(details);
+
+      listItem.appendTo(sidebar);
+
+      $(`.city[id='${result.plaka_kodu}']`).addClass("selected");
+    });
+  }
+}
 });
+
 
 function resetSelected() {
   $(".city").removeClass("selected");
@@ -168,6 +218,9 @@ function resetSelected() {
 
 function showSidebar() {
   $(".yoa382").css("visibility", "visible");
+}
+function filterAdminDataRemoval() {
+  $(".yoa382").css("display", "block");
 }
 function hideSidebar() {
   $(".yoa382").css("visibility", "hidden");
