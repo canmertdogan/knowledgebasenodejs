@@ -1,171 +1,246 @@
-<!DOCTYPE html>
+<!doctype html>
+<html>
+
 <head>
-  <title>Rus Evi Ankara</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>РОССОТРУДНИЧЕСТВО</title>
+    <link href="css/admin.css" type=text/css rel=stylesheet>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+        integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
 </head>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
-  integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
-  crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link href="css/main.css" type="text/css" rel=stylesheet />
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" aria-label="Thirteenth navbar example"
-  style="position:fixed; width:100%; z-index: 1500;">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
-      aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-      <a class="navbar-brand col-lg-3 me-0" href="#">АДМИНИСТРАТОР</a>
-      <ul class="navbar-nav col-lg-6 justify-content-lg-center">
-
-        <li class="nav-item">
-          <a class="nav-link" href="#">Dernekler</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">Hizmet Alanları</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">Konsolosluklar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">Eğitim Kurumları</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Язык</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Турецкий - Türkçe</a></li>
-            <li><a class="dropdown-item" href="#">Английский - English</a></li>
-            <li><a class="dropdown-item" href="#">Русский</a></li>
-          </ul>
-        </li>
-      </ul>
-      <div class="d-lg-flex col-lg-3 justify-content-lg-end">
-        <input class="form-control" id="search-input" type="search" placeholder="Search" aria-label="Аra"
-          style="width:250px; margin-right:8px;">
-        <button class="btn btn-primary" id="search-button" onclick="resetSelected(); showSidebar()">Поиск</button>
-      </div>
-    </div>
-  </div>
-</nav>
-<br><br>
-
 
 <body>
 
-
-
-
-
-
-
-  <div id="container-fluid">
-    <div id="title-admin">
-      <h3 id="container-title">Veri ekle</h3>
-      <hr>
-      <form>
-        <!-- Normal Text Inputs -->
-        <div class="mb-3">
-
-          <input type="text" class="form-control" id="input1" name="input1" placeholder="Eklenecek olan kurumun adı">
-        </div>
-        <div class="mb-3">
-
-          <input type="text" class="form-control" id="input2" name="input2" placeholder="Eklenecek olan kurumun adresi">
-        </div>
-        <div class="mb-3">
-          <input type="text" class="form-control" id="input2" name="input2"
-            placeholder="Eklenecek olan kurumun telefon numarası">
-        </div>
-        <div class="mb-3">
-          <input type="text" class="form-control" id="input2" name="input2"
-            placeholder="Eklenecek olan kurumun E-Mail Adresi">
+    <div id=mainbar>
+        <h1
+            style="margin-left: 16px;color:white; text-shadow: 2px 2px 5px #222; float:left; margin-top:28px; font-size: 20px;">
+            АДМИНИСТРАТОР - РФ</h1>
+        <div id=maincontainer>
+            <input type=search id="search-input" placeholder="Search for locations in Turkiye (⏎)" /><button
+                class="btn btn-primary" id="search-button" onclick="resetSelected(); showSidebar()">
+                <i class="fa-brands fa-searchengin" style="font-size: 24px; text-shadow: 2px 2px 5px #222;"></i>
+            </button><br><br><br>
         </div>
 
 
-        <!-- Dropdowns -->
-        <div class="mb-3">
+        <div class="buttoncontainer">
 
-          <select class="form-select" id="dropdown1" name="dropdown1">
-            <option selected>Hizmet Alanı Seçiniz</option>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-          </select>
-        </div>
-        <div class="mb-3">
-
-          <select class="form-select" id="dropdown2" name="dropdown2">
-            <option selected>Şehir Seçiniz</option>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-          </select>
-        </div>
-
-        <!-- Big Text Box -->
-        <div class="mb-3">
-
-          <textarea class="form-control" id="bigTextBox" name="bigTextBox" rows="5"
-            placeholder="Kurum Hakkındaki Detaylar"></textarea>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary">Verileri Kaydet</button>
-      </form>
-    </div>
-  </div>
-
-
-  <div id="container-fluid">
-    <div id="title-admin">
-      <h3 id="container-title">Veri Kaldır</h3>
-      <hr>
-
-      <h4 align="center">Filtreleme Menüsü</h4>
-      </a>
-      <div class="list-group list-group-flush border-bottom scrollarea">
-        <div style="padding: 16px">
-          <select class="form-select form-select-sm" id="hizmet-select" aria-label=".form-select-sm example">
-            <option selected>Hizmet Alanı Seçiniz</option>
-            <option value="1">Dernekler</option>
-            <option value="2">Kültür Merkezleri</option>
-            <option value="3">Konsolosluklar</option>
-            <option value="4">Eğitim Kurumu (İlk Öğretim, Orta Öğretim)</option>
-            <option value="5">Eğitim Kurumu (Yüksek Öğretim)</option>
-          </select>
-          <br />
-          <select class="form-select form-select-sm" id="il-select" aria-label=".form-select-sm example">
-            <option value="">Şehir Seçiniz - Haritadan Seçilebilir</option>
-          </select>
-          <br />
-          <div class="btn-group">
-            <button type="button" class="btn btn-success" style="width: 436px"
-              onclick="resetSelected(); hohogo(); filterAdminDataRemoval(); ">
-              Filtrele!
+            <button class="white-button" onclick="resetSelected(); filterResults(); showSidebar(); "><i
+                    class="fa-solid fa-hand-holding-heart" style="font-size: 24px;"></i>
+                <p class="buttext">Charities</p>
             </button>
-
-          </div>
+            <button class="white-button"><i class="fa-solid fa-flag" style="font-size: 24px;"></i>
+                <p class="buttext">Consulates</p>
+            </button>
+            <button class="white-button"><i class="fa-solid fa-school" style="font-size: 24px;"></i>
+                <p class="buttext">Schools</p>
+            </button>
+            <button class="white-button"><i class="fa-solid fa-graduation-cap" style="font-size: 24px;"></i>
+                <p class="buttext">Universities</p>
+            </button>
+           <form action="/login" method="get">
+            <button type="submit" class="white-button"><i class="fa-solid fa-circle-user" style="font-size: 24px;"></i>
+                <p class="buttext">Logout</p>
+            </button>
+           </form>
         </div>
-      </div>
-      <br>
-      
+    </div>
+
+    </div>
+
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary yoa382" style="
+      z-index: 8000;
+      position: absolute;
+      margin-top: 100px !important;
+      margin: 16px;
+      border-radius: 6px;
+      visibility: hidden;
+      right: 0;
+    ">
+        <div href="/"
+            class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom"
+            style="box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);   background: linear-gradient(90deg, rgba(39,39,122,1) 0%, rgba(101,26,26,1) 100%); border:none !important; border-top-left-radius: 6px; border-top-right-radius: 6px;">
+            <a href="#" onclick="hideSidebar()" style="color: white !important;">
+                <i class="fa-regular fa-circle-xmark" style="font-size: 20px; margin-top: 4px;"></i>
+            </a>
+            <span class="fs-5 fw-semibold" style="color:white !important; margin-left: 20px;">Sonuçlar:</span>
+        </div>
+        <div class="list-group liste-grup list-group-flush border-bottom scrollarea scroll" id="results-list"></div>
+    </div>
+
+    </div>
+
+    <div class="container">
+
+
+
+
+        <div class="CountContainer">
+            <h1
+                style="margin-left: 16px;color:white; text-shadow: 2px 2px 5px #222; float:left; margin-top:16px; margin-bottom: 1px;font-size: 24px; margin-left: 30px;">
+                Data Stats:</h1>
+
+            <br><br>
+            <div class="tabContainer">
+                <div class="KurumCount">
+
+                    <i class="fa-solid fa-flag"
+                        style="margin-top: 50px; margin-left: 75px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1;"></i>
+                    <p style="color:white; font-weight:600; margin-top: 14px; margin-left: 18px; float:left;">Total
+                        Consulates:
+                    </p>
+                    <p id="counter1"
+                        style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">
+                        <i class="fa-solid fa-spinner fa-spin-pulse" style="color: #ffffff;"></i></p>
+                </div>
+
+                <div class="KurumCount2">
+
+                    <i class="fa-solid fa-hand-holding-heart"
+                        style="margin-top: 50px; margin-left: 60px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1; "></i>
+                    <p style="color:white; font-weight:600; margin-top: 14px; margin-left: 18px; float:left;">Total
+                        Charities:
+                    </p>
+                    <p
+                    id="counter2"style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">
+                    <i class="fa-solid fa-spinner fa-spin-pulse" style="color: #ffffff;"></i></p>
+                </div>
+
+                <div class="KurumCount3">
+
+                    <i class="fa-solid fa-school"
+                        style="margin-top: 50px; margin-left: 43px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1;"></i>
+                    <p style="color:white; font-weight:600; margin-top: 14px; margin-left: 18px; float:left;">Total
+                        Schools:
+                    </p>
+                    <p
+                        id="counter3" style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">
+                        <i class="fa-solid fa-spinner fa-spin-pulse" style="color: #ffffff;"></i></p>
+                </div>
+
+                <div class="KurumCount4">
+
+                    <i class="fa-solid fa-graduation-cap"
+                        style="margin-top: 50px; margin-left: 45px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1;"></i>
+                    <p style="color:white; font-weight:600; margin-top: 14px; margin-left: 18px; float:left;">Total
+                        Universities:
+                    </p>
+                    <p
+                    id="counter4" style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">
+                        660</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="OptionContainer">
+            <h1
+                style="margin-left: 16px;color:white; text-shadow: 2px 2px 5px #222; float:left; margin-top:16px; margin-bottom: 1px;font-size: 24px; margin-left: 30px;">
+                Operation Menu:</h1>
+
+            <br><br>
+            <div class="tabContainer">
+                <a href="/user">
+                <div class="opmenu">
+
+                    <i class="fa-solid fa-circle-user"
+                        style="margin-top: 50px; margin-left: 60px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1;"></i>
+
+                    <p
+                        style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">
+                        Add User</p>
+                </div>
+            </a>
+                <a href="/tools">
+                <div class="opmenu">
+
+                    <i class="fa-solid fa-hand-holding-heart"
+                        style="margin-top: 50px; margin-left: 60px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1; "></i>
+
+                    <p
+                        style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">
+                        Site Tools</p>
+                </div>
+            </a>
+            <a href="/add">
+                <div class="opmenu">
+
+                    <i class="fa-solid fa-school"
+                        style="margin-top: 50px; margin-left: 43px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1;"></i>
+
+                    <p
+                        style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">
+                        Add Org.</p>
+                </div>
+            </a>
+            <a href="/remove">
+                <div class="opmenu">
+
+                    <i class="fa-solid fa-graduation-cap"
+                        style="margin-top: 50px; margin-left: 45px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1;"></i>
+
+                    <p
+                        style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">
+                        Delete Org.</p>
+                </div>
+            </div>
+        </a>
+
+
+        </div>
+
 
 
     </div>
-    <h4 align="center" class="yoa382" style="display:none;">Çıkan Sonuçlar:</h4>
-    <div class="list-group liste-grup list-group-flush border-bottom scrollarea scroll yoa382" style="width: 100% !important; display:none;" id="results-list"></div>
-  </div>
-  
 
 
+        </div>
+
+
+
+    </div>
+    
 </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
 
 <script type="text/javascript" src="js/main.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"
-  integrity="sha512-VK2zcvntEufaimc+efOYi622VN5ZacdnufnmX7zIhCPmjhKnOi9ZDMtg1/ug5l183f19gG1/cBstPO4D8N/Img=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    integrity="sha512-VK2zcvntEufaimc+efOYi622VN5ZacdnufnmX7zIhCPmjhKnOi9ZDMtg1/ug5l183f19gG1/cBstPO4D8N/Img=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>

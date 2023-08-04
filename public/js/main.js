@@ -1,3 +1,80 @@
+$(document).ready(function () {
+  // Function to read a JSON file and display the data count
+  function displayDataCount(filename, countElement) {
+    return $.getJSON(`json/${filename}`)
+      .then(function (data) {
+        console.log("Data fetched:", data); // Add this line for debugging
+        const count = data.centers.length; // Access the length of the 'centers' array
+        console.log("Count:", count); // Add this line for debugging
+        countElement.text(count);
+        return count; // Return the count for Promise.all()
+      })
+      .catch(function (error) {
+        console.error(error);
+        countElement.text("ERR");
+        return 0; // Return 0 to handle the error in Promise.all()
+      });
+  }
+  displayDataCount("konsolosluklar.json", $("#counter1")),
+    displayDataCount("okullar.json", $("#counter3")),
+    displayDataCount("universiteler.json", $("#counter4")),
+    // Call the displayDataCount function for each JSON file
+    Promise.all([
+
+      displayDataCount("dernekler.json", $("#counter2")),
+      displayDataCount("kulturmerkezleri.json", $("#counter2")),
+
+    ])
+      .then(counts => {
+        console.log("Counts:", counts);
+        const combinedCount = counts.reduce((acc, count) => acc + count, 0);
+        console.log("Combined Count:", combinedCount);
+        $("#counter2").text(combinedCount);
+      })
+      .catch(error => {
+        console.error(error);
+        $("#counter1").text("Error combining counts");
+      });
+});
+
+
+$(document).ready(function () {
+  function populateTableWithJSONData(fileURL) {
+    $.getJSON(fileURL, function (data) {
+      var tableData = '';
+      $.each(data.centers, function (index, obj) {
+        tableData += '<tr>';
+        tableData += '<td>' + obj.plaka_kodu + '</td>';
+        tableData += '<td>' + obj.name + '</td>'; // Access the "name" property
+
+        tableData += '<td>' + obj.phone + '</td>'; // Access the "phone" property
+        tableData += '<td>' + obj.email + '</td>'; // Access the "email" property
+        tableData += '<td>' + ' <button type="button" class="btn btn-danger">Remove</button>' + '</td>';
+
+        // Access the "plaka_kodu" property
+        tableData += '</tr>';
+      });
+      $('#data-table tbody').html(tableData);
+    }).fail(function () {
+      console.error('Error fetching data from the server');
+    });
+  }
+  var jsonFiles = [
+    { url: "/ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb" },
+    { url: "/3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d" },
+    { url: "/2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6" },
+    { url: "/18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4" },
+    { url: "/3f79bb7b435b05321651daefd374cdc681dc06faa65e374e38337b88ca046dea" }
+  ];
+  // Call the function to populate the table with data from each JSON file
+  jsonFiles.forEach(function (file) {
+    populateTableWithJSONData(file.url);
+  });
+});
+  
+ 
+
+
 function filterResults() {
   var selectedService = $("#hizmet-select").val();
   var selectedCity = $("#il-select").val();
@@ -5,77 +82,27 @@ function filterResults() {
   var jsonFileName = "";
 
   if (selectedService === "1") {
-    jsonFileName = "/public/json/dernekler.json";
+    jsonFileName = "/ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb";
   } else if (selectedService === "2") {
-    jsonFileName = "/public/json/kulturmerkezleri.json";
+    jsonFileName = "/3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d";
   } else if (selectedService === "3") {
-    jsonFileName = "/public/json/konsolosluklar.json";
+    jsonFileName = "/2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6";
   } else if (selectedService === "4") {
-    jsonFileName = "/public/json/okullar.json";
+    jsonFileName = "/18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4";
   } else if (selectedService === "5") {
-    jsonFileName = "/public/json/universiteler.json";
+    jsonFileName = "/3f79bb7b435b05321651daefd374cdc681dc06faa65e374e38337b88ca046dea";
   }
 
-  if (jsonFileName) {
-    $.getJSON(jsonFileName, function (jsonData) {
-      if (jsonData) {
-        var sidebar = $(".liste-grup");
-        var cities = $(".city");
 
-        sidebar.empty();
-
-        for (var i = 0; i < jsonData.centers.length; i++) {
-          var data = jsonData.centers[i];
-          if (!selectedCity || data.plaka_kodu === selectedCity) {
-            var listItem = $("<a>")
-              .addClass("list-group-item list-group-item-action py-3 lh-sm")
-              .attr("href", "#")
-              .attr("aria-current", "true");
-            var contentContainer = $("<div>")
-              .addClass(
-                "d-flex w-100 align-items-center justify-content-between"
-              )
-              .appendTo(listItem);
-            var name = $("<strong>")
-              .addClass("mb-1")
-              .text(data.name)
-              .appendTo(contentContainer);
-            var city = $("<small>")
-              .text(data.il_adi)
-              .appendTo(contentContainer);
-            var details = $("<div>")
-              .addClass("col-10 mb-1 small")
-              .appendTo(listItem);
-            $("<p style='font-size:14px;'>")
-              .html(
-                "<br><strong>Address:</strong> " +
-                data.address +
-                "<br><br><strong>Phone:</strong> " +
-                data.phone +
-                "<br><strong>Email:</strong>" +
-                data.email
-              )
-              .appendTo(details);
-
-            listItem.appendTo(sidebar);
-
-            $(`.city[id='${data.plaka_kodu}']`).addClass("selected");
-          }
-        }
-      }
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-      console.log("JSON dosyası alınamadı. Hata: " + errorThrown);
-    });
-  }
 }
 
 $(document).ready(function () {
   var jsonFiles = [
-    { url: "/public/json/dernekler.json", searchField: "name" },
-    { url: "/public/json/kulturmerkezleri.json", searchField: "name" },
-    { url: "/public/json/konsolosluklar.json", searchField: "name" },
-    { url: "/public/json/okullar.json", searchField: "name" },
-    // { url: "/public/json/universiteler.json", searchField: "name" }
+    { url: "/ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", searchField: "name" },
+    { url: "/3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d", searchField: "name" },
+    { url: "/2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6", searchField: "name" },
+    { url: "/18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4", searchField: "name" },
+    { url: "/3f79bb7b435b05321651daefd374cdc681dc06faa65e374e38337b88ca046dea", searchField: "name" }
   ];
 
   $("#search-button").click(function () {
@@ -163,52 +190,55 @@ $(document).ready(function () {
   }
 
 
-function hohogo(results) {
-  var sidebar = $("#results-list");
-  sidebar.empty();
+  /*function hohogo(results) {
+    var sidebar = $("#results-list");
+    sidebar.empty();
+  
+    if (results.length === 0) {
+      sidebar.append("<li>Arama sonucu bulunamadı.</li>");
+    } else {
+      $.each(results, function (index, result) {
+        var listItem = $("<li>")
+          .addClass("list-group-item list-group-item-action py-3 lh-sm")
+          .attr("aria-current", "true");
+  
+        var contentContainer = $("<div>")
+          .addClass("d-flex w-100 align-items-center justify-content-between")
+          .appendTo(listItem);
+  
+        var name = $("<strong>")
+          .addClass("mb-1")
+          .text(result.name)
+          .appendTo(contentContainer);
+  
+        var city = $("<small>").text(result.il_adi).appendTo(contentContainer);
+  
+        var details = $("<div>")
+          .addClass("col-10 mb-1 small")
+          .appendTo(listItem);
+  
+        $("<p style='font-size:14px;'>")
+          .html(
+            "<br><strong>Adres:</strong> " +
+            result.address +
+            "<br><br><strong>Telefon:</strong> " +
+            result.phone +
+            "<br><strong>Email:</strong> " +
+            result.email +
+            "<br><button class=\"btn btn-danger\" id=\"jsonDataRemove\">Veriyi yok et!</button>"
+            
+          )
+          .appendTo(details);
+  
+        listItem.appendTo(sidebar);
+  
+        $(`.city[id='${result.plaka_kodu}']`).addClass("selected");
+      });
+    }
+    }
+  
+    */
 
-  if (results.length === 0) {
-    sidebar.append("<li>Arama sonucu bulunamadı.</li>");
-  } else {
-    $.each(results, function (index, result) {
-      var listItem = $("<li>")
-        .addClass("list-group-item list-group-item-action py-3 lh-sm")
-        .attr("aria-current", "true");
-
-      var contentContainer = $("<div>")
-        .addClass("d-flex w-100 align-items-center justify-content-between")
-        .appendTo(listItem);
-
-      var name = $("<strong>")
-        .addClass("mb-1")
-        .text(result.name)
-        .appendTo(contentContainer);
-
-      var city = $("<small>").text(result.il_adi).appendTo(contentContainer);
-
-      var details = $("<div>")
-        .addClass("col-10 mb-1 small")
-        .appendTo(listItem);
-
-      $("<p style='font-size:14px;'>")
-        .html(
-          "<br><strong>Adres:</strong> " +
-          result.address +
-          "<br><br><strong>Telefon:</strong> " +
-          result.phone +
-          "<br><strong>Email:</strong> " +
-          result.email +
-          "<br><button class=\"btn btn-danger\" id=\"jsonDataRemove\">Veriyi yok et!</button>"
-          
-        )
-        .appendTo(details);
-
-      listItem.appendTo(sidebar);
-
-      $(`.city[id='${result.plaka_kodu}']`).addClass("selected");
-    });
-  }
-}
 });
 
 
@@ -253,7 +283,7 @@ for (i = 0; i < svgTurkeyMap.length; i++) {
 $(function () {
   const ilSelect = $("#il-select");
 
-  $.getJSON("/public/json/citydata-turkey.json", function (data) {
+  $.getJSON("/citydata", function (data) {
     const iller = data.iller;
     const combolistSecenekleri = iller.map((il) => {
       return { value: il.plaka_kodu, textContent: il.il_adi };
@@ -309,3 +339,4 @@ var ilElements = document.querySelectorAll(".city");
 ilElements.forEach(function (ilElement) {
   ilElement.addEventListener("click", selectCity);
 });
+

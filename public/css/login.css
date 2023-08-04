@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700');
+
+.site-header {
+  margin-bottom: 40px;
+}
+
+.site-header__title {
+    text-align: center;
+    background: #444;
+    padding: 15px;
+    border-radius: 4px;
+    color: #9c9c9c;
+    font-size: 28px;
+  }
+
+.site-header__title__light {
+      font-weight: 300;
+      color: #adadad;
+    }
+
+.map-container {
+    padding: 2%;
+    margin-top: 9%;
+    width: 70%;
+    
+    position: fixed;
+    left: 50%;
+    transform: translateX(-52%);
+    float: left;
+  
+    
+    
+}
+
+.city {
+  fill: #27277a;
+  fill-opacity: 1;
+  stroke:white;
+  stroke-opacity: 1;
+  stroke-width:0.5;
+  -webkit-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+  cursor: pointer;
+  
+}
+
+.city:hover {
+     fill: #df4141;
+}
+
+.selected {
+    fill: green;
+  }
+.show-city-name {
+  background-color: #f31212;
+  border-radius: 10px;
+  color: #fff;
+  position: absolute;
+  padding: 15px 25px;
+  
+  visibility: hidden;
+  font-size: 16px;
+  
+}
+
+.show-city-name--active {
+    opacity: 1;
+    visibility: visible;
+    margin: -170px;
+  }
+
+.site-footer {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 40px;
+  color: #ababab;
+
+}
+
+.site-footer__link {
+    color: #3498db;
+    font-weight: 700;
+  }
+
+  div.scroll {
+    right: 0px;
+    width: 370px;
+    height: 700px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+#container-fluid{
+  margin: 12px;
+  margin-top: 24px;
+  background-color: #fff;
+  width: 500px;
+  border-radius: 10px;
+  padding:16px;
+  float:left;
+
+}
+#container-title{
+  padding:2px;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+@keyframes animateBg {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 0%; }
+  100% { background-position: 0% 100%;}
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+body{
+	margin:0px;
+	animation: animateBg 8s linear infinite !important;
+  background: #07074A !important;
+  background-size: 200% 100% !important;
+  background-repeat: no-repeat !important;
+  width: 100%;
+  height: 100% !important;
+  
+	font-family: 'Raleway', sans-serif;
+	overflow-x: hidden;
+  
+}
+#mainbar{
+	animation: animateBg 8s linear infinite;
+  background: linear-gradient(45deg, rgba(0,0,128,1) 0%, rgba(168,30,30,1) 100%);
+	background-size: 200% 100%;
+	padding:1px;
+	height: 80px;
+	width: 100%;
+	overflow:hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  position:fixed;
+	
+	}
+
+.search-input{
+	margin-top: 15px;
+  margin-left: -10px;
+	padding: 14px !important;
+	box-shadow: 2px 3px 10px #102648;
+	border-radius: 16px;
+	width: 500px;
+  height: 16px;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 16px;
+	float: left;
+	border: none;
+	top: 0;
+	opacity: 0.8;
+	
+
+}
+#maincontainer{
+	margin-left: 32px;
+  margin-top: 2%;
+  width: 600px;
+  float:left;
+  z-index: 200;
+  opacity: 1.0 !important;
+}
+#servicetable{
+	margin: 45px;
+
+}
+.navContainer{
+	padding:16px;
+	
+}
+.white-button {
+	background: transparent;
+	color: white;
+	border: none;
+	margin-right: 27px;
+	font-size: 12px;
+	font-weight: 700;
+	text-shadow: 2px 2px 5px #222;
+	margin-top: 7px; margin-left: -5px; text-shadow: 2px 2px 5px #222;
+	opacity: 0.9;
+	
+  }
+  
+  .white-button i {
+	color: white;
+	margin-right: 5px;
+	margin-top: 7px; margin-left: -5px; text-shadow: 2px 2px 5px #222;
+	opacity: 0.9;
+  }
+  .white-button:hover i {
+	opacity: 1;
+}
+  .buttext{
+	margin-left: -10px;
+	margin-top: 10px;
+	opacity: 0.9;
+  }
+  .buttoncontainer{
+	float:right;
+	margin-right: 1px;
+  }
+  .mainmenu{
+	padding:10px;
+	background-color: #F3793E;
+	width:100%;
+	box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2);
+	
+  }
+  .menuElements{
+	text-decoration:none;
+	color:white;
+	padding: 6px 20px;
+	border:none;
+	font-weight: 800;
+  }
+  .menuElements:hover{
+	text-decoration:none;
+	color: white;
+	padding: 6px 20px;
+	border:none;
+	font-weight: 800;
+	background-color: #f3ae8c;
+	border:none;
+	border-radius:4px;
+  }
+
+
+#maincontainerfilter{
+  padding: 48px;
+	animation: animateBg 4s linear infinite !important;
+  background: linear-gradient(45deg, rgba(0,0,128,1) 0%, rgba(168,30,30,1) 100%) !important;
+  background-size: 200% 400% !important;
+  border-radius: 16px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  bottom: 24px;
+  position: fixed;
+  height: 360px;
+  width: 990px;
+  z-index: 100;
+}
+.rslogocontainer {
+  z-index: 2;
+  opacity: 0.1;
+  position: fixed;
+  top: 50%;
+  right: 0%;
+  transform: translate(50%, -50%);
+}
+
+.spin-logo {
+  animation: spin 30s linear infinite;
+  transform-origin: center;
+}
+
+
+
+  select{
+    opacity:0.8 !important;
+    float:left;
+    width: 300px !important;
+    margin: 12px !important;
+    padding:8px !important;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 12px !important;
+    
+  }
+
+  .filtrele{
+    padding: 9px !important;
+    opacity:0.9;
+    width: 528px !important;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    color:white !important;
+    border-radius: 12px !important;
+    font-size:20px !important;
+    font-weight: 400;
+    background: linear-gradient(45deg, rgba(0,0,128,1) 0%, rgba(168,30,30,1) 100%) !important;
+    border:none !important;
+    margin-top: 28px;
+    margin-left: -10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+
+  #search-button{
+    padding: 4px !important;
+    margin-left: 8px;
+    width: 50px !important;
+    height: 49px !important;
+    margin-top: 14px;
+    border-radius: 16px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    border:none !important;
+    background: linear-gradient(45deg, rgba(0,0,164,1) 0%, rgba(168,30,30,1) 100%);
+
+  }
+
+  .logocontainer{
+    margin-right: 50px;
+    margin-top: 30px;
+    float:right;
+    width: 300px;
+    height: 300px;
+    
+    
+  }
+
