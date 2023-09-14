@@ -1,5 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #444;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #222;
+}
+
+
 .site-header {
   margin-bottom: 40px;
 }
@@ -325,3 +347,16 @@ body{
     
   }
 
+  #modal { z-index: 80000; display: show; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); }
+
+  .modal-content {  position: relative; margin: auto; padding: 20px; width: 80%; max-width: 600px; border: 2px solid #90d93f; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+  
+  .close { /* Style the close button */ position: absolute; top: 10px; right: 20px; font-size: 32px; }
+  
+  #modal-header { /* Style the modal header */ font-weight: bold; }
+  
+  #modal-body { /* Style the modal body */ font-size:14px; color:white; }
+
+#google_translate_element{ 
+    display: none;
+  }

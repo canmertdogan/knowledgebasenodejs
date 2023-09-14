@@ -39,6 +39,12 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/m", (req, res) => {
+  fs.readFile("mobile.html", "utf-8", function (err, html) {
+    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+    res.end(html);
+  });
+});
 // Login route handling form submission (POST)
 app.use((req, res, next) => {
   if (req.url === "/users.json") {
@@ -104,6 +110,7 @@ app.get("/login", (req, res) => {
     res.end(html);
   });
 });
+
 app.get("/user", (req, res) => {
   if (req.session.authenticated) {
     fs.readFile("user.html", "utf-8", function (err, html) {
@@ -169,37 +176,47 @@ app.post("/add-user", (req, res) => {
       // Write the updated data back to users.json
       fs.writeFileSync(filePath, JSON.stringify(jsonData, null, 2), "utf8");
 
-      res.send({ success: true, message: "User added successfully" });
+      res.redirect("/user");
     });
   });
 });
 
 
-
-
 app.post("/remove-user", (req, res) => {
   const { email } = req.body;
+  console.log("Received request to remove user with email:", email);
+  if (!email) {
+    return res.status(400).json({ success: false, message: "Email is required" });
+  }
 
-  // Read the existing data from users.json
-  const filePath = path.join(__dirname, "users.json");
-  const data = fs.readFileSync(filePath, "utf8");
-  const jsonData = JSON.parse(data);
+  try {
+    // Read the existing data from users.json
+    const filePath = path.join(__dirname, "users.json");
+    const data = fs.readFileSync(filePath, "utf8");
+    const jsonData = JSON.parse(data);
 
-  // Find the index of the user with the provided ID
-  const userIndex = jsonData.users.findIndex(user => user.email);
+    // Find the index of the user with the provided email
+    const userIndex = jsonData.users.findIndex(user => user.email === email);
 
-  if (userIndex !== "") {
-    // Remove the user from the array
-    jsonData.users.splice(userIndex, 1);
+    if (userIndex !== -1) {
+      // Remove the user from the array
+      jsonData.users.splice(userIndex, 1);
 
-    // Write the updated data back to users.json
-    fs.writeFileSync(filePath, JSON.stringify(jsonData, null, 2), "utf8");
+      // Write the updated data back to users.json
+      fs.writeFileSync(filePath, JSON.stringify(jsonData, null, 2), "utf8");
 
-    res.json({ success: true, message: "User removed successfully" });
-  } else {
-    res.status(404).json({ success: false, message: "User not found" });
+      return res.redirect("/user");
+    } else {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    return res.status(500).json({ success: false, message: "An error occurred" });
   }
 });
+
+
+
 
 
 // Admin route for serving the admin page (GET)
@@ -335,10 +352,9 @@ app.post('/remove/:centerName', (req, res) => {
       const sourceData = require(sourceJsonFile);
       const updatedCenters = sourceData.centers.filter(center => center.name !== centerNameToRemove);
       
-      // Update the JSON file with the updated data
       fs.writeFileSync(sourceJsonFile, JSON.stringify({ centers: updatedCenters }, null, 2));
       
-      // Remove the entry from the allCenters array
+  
       allCenters.splice(indexToRemove, 1);
     }
   }
@@ -357,12 +373,6 @@ app.post('/remove/:centerName', (req, res) => {
 
 
 
-
-
-
-
-
-
 app.get("/tools", (req, res) => {
   if (req.session.authenticated) {
     fs.readFile("tools.html", "utf-8", function (err, html) {
@@ -370,13 +380,13 @@ app.get("/tools", (req, res) => {
       res.end(html);
     });
   } else {
-    res.redirect("/login"); // Redirect to the login page if not authenticated
+    res.redirect("/login");
   }
 });
 
-// Logout route to clear the session and redirect to the login page (GET)
+
 app.get("/logout", (req, res) => {
-  req.session.authenticated = false; // Reset the authentication status
+  req.session.authenticated = false;
   req.session.destroy((err) => {
     if (err) {
       console.error("Error destroying session:", err);
@@ -384,32 +394,6 @@ app.get("/logout", (req, res) => {
     res.redirect("/");
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

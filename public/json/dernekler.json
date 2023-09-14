@@ -126,18 +126,6 @@
       "plaka_kodu": "61"
     },
     {
-      "name": "Russian School of Izmir",
-      "meta": {
-        "type": "private",
-        "curriculum": "Russian",
-        "age_range": "3-18"
-      },
-      "address": "Kemeralti Mah., 883 Sokak No:10, 35220 Konak, Izmir, Turkey",
-      "phone": "+90 232 484 63 00",
-      "email": "info@russchool-izmir.com",
-      "plaka_kodu": "35"
-    },
-    {
       "name": "Russian School of Ankara",
       "meta": {
         "type": "private",
@@ -273,18 +261,6 @@
       "phone": "+90 462 321 35 00",
       "email": "info@russchool-trabzon.com",
       "plaka_kodu": "61"
-    },
-    {
-      "name": "Russian School of Izmir",
-      "meta": {
-        "type": "private",
-        "curriculum": "Russian",
-        "age_range": "3-18"
-      },
-      "address": "Kemeralti Mah., 883 Sokak No:10, 35220 Konak, Izmir, Turkey",
-      "phone": "+90 232 484 63 00",
-      "email": "info@russchool-izmir.com",
-      "plaka_kodu": "35"
     },
     {
       "name": "Russian School of Ankara",

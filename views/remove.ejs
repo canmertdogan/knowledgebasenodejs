@@ -15,6 +15,8 @@
         integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js'></script> 
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css' />
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
 </head>
 
@@ -33,25 +35,28 @@
 
 
         <div class="buttoncontainer">
-
-            <button class="white-button" onclick="resetSelected(); filterResults(); showSidebar(); "><i
-                    class="fa-solid fa-hand-holding-heart" style="font-size: 24px;"></i>
+            <button class="white-button" id="charities-button" value="1" onclick="buttonClicked(this); resetSelected(); filterResults(); showSidebar();">
+                <i class="fa-solid fa-hand-holding-heart" style="font-size: 24px;"></i>
                 <p class="buttext">Charities</p>
             </button>
-            <button class="white-button"><i class="fa-solid fa-flag" style="font-size: 24px;"></i>
+            <button class="white-button" id="consulates-button" value="3" onclick=" buttonClicked(this);resetSelected(); filterResults(); showSidebar();">
+                <i class="fa-solid fa-flag" style="font-size: 24px;"></i>
                 <p class="buttext">Consulates</p>
             </button>
-            <button class="white-button"><i class="fa-solid fa-school" style="font-size: 24px;"></i>
+            <button class="white-button" id="schools-button" value="2" onclick=" buttonClicked(this); resetSelected(); filterResults(); showSidebar();">
+                <i class="fa-solid fa-school" style="font-size: 24px;"></i>
                 <p class="buttext">Schools</p>
             </button>
-            <button class="white-button"><i class="fa-solid fa-graduation-cap" style="font-size: 24px;"></i>
+            <button class="white-button" id="universities-button" value="5" onclick=" buttonClicked(this); resetSelected(); filterResults(); showSidebar();">
+                <i class="fa-solid fa-graduation-cap" style="font-size: 24px;"></i>
                 <p class="buttext">Universities</p>
             </button>
-           <form action="/login" method="get">
-            <button type="submit" class="white-button"><i class="fa-solid fa-circle-user" style="font-size: 24px;"></i>
-                <p class="buttext">Logout</p>
-            </button>
-           </form>
+            <form action="/logout">
+                <button class="white-button">
+                    <i class="fa-solid fa-circle-user" style="font-size: 24px;"></i>
+                    <p class="buttext">Logout</p>
+                </form>
+            </a>
         </div>
     </div>
 
@@ -87,7 +92,7 @@
         <div class="CountContainer">
             <h1
                 style="margin-left: 16px;color:white; text-shadow: 2px 2px 5px #222; float:left; margin-top:16px; margin-bottom: 1px;font-size: 24px; margin-left: 30px;">
-                Remove an Organization:</h1>
+                Remove an Organization (CTRL+F for Search):</h1>
 
             <br><br><br>
             <div class="tabContainer">

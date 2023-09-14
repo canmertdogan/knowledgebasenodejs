@@ -7,6 +7,7 @@
     <meta http-equiv="Expires" content="0">
     <title>РОССОТРУДНИЧЕСТВО</title>
     <link href="css/main.css" type=text/css rel=stylesheet>
+    <link href="css/modal.css" type=text/css rel=stylesheet>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -15,7 +16,11 @@
         integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js'></script> 
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css' />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
+
 </head>
 
 <body>
@@ -25,7 +30,7 @@
             style="margin-left: 16px;color:white; text-shadow: 2px 2px 5px #222; float:left; margin-top:28px; font-size: 20px;">
             РОССОТРУДНИЧЕСТВО</h1>
         <div id=maincontainer>
-            <input type=search id="search-input" placeholder="Search for locations in Turkiye (⏎)" /><button
+            <input type=search id="search-input" placeholder="Поиск локации в Турции(⏎)" /><button
                 class="btn btn-primary" id="search-button" onclick="resetSelected(); showSidebar()">
                 <i class="fa-brands fa-searchengin" style="font-size: 24px; text-shadow: 2px 2px 5px #222;"></i>
             </button><br><br><br>
@@ -33,30 +38,36 @@
 
 
         <div class="buttoncontainer">
-
-            <button class="white-button" onclick="resetSelected(); filterResults(); showSidebar(); "><i class="fa-solid fa-hand-holding-heart" style="font-size: 24px;"></i>
-                <p class="buttext">Charities</p>
+            <button class="white-button" id="charities-button" value="1" onclick="buttonClicked(this); resetSelected(); filterResults(); showSidebar();">
+                <i class="fa-solid fa-hand-holding-heart" style="font-size: 24px;"></i>
+                <p class="buttext">Орг.</p>
             </button>
-            <button class="white-button"><i class="fa-solid fa-flag" style="font-size: 24px;"></i>
-                <p class="buttext">Consulates</p>
+            <button class="white-button" id="consulates-button" value="3" onclick=" buttonClicked(this);resetSelected(); filterResults(); showSidebar();">
+                <i class="fa-solid fa-flag" style="font-size: 24px;"></i>
+                <p class="buttext">Консульствы</p>
             </button>
-            <button class="white-button"><i class="fa-solid fa-school" style="font-size: 24px;"></i>
-                <p class="buttext">Schools</p>
+            <button class="white-button" id="schools-button" value="2" onclick=" buttonClicked(this); resetSelected(); filterResults(); showSidebar();">
+                <i class="fa-solid fa-school" style="font-size: 24px;"></i>
+                <p class="buttext">Школы</p>
             </button>
-            <button class="white-button"><i class="fa-solid fa-graduation-cap" style="font-size: 24px;"></i>
-                <p class="buttext">Universities</p>
+            <button class="white-button" id="universities-button" value="5" onclick=" buttonClicked(this); resetSelected(); filterResults(); showSidebar();">
+                <i class="fa-solid fa-graduation-cap" style="font-size: 24px;"></i>
+                <p class="buttext">Вузы</p>
             </button>
-            <a href="/login"><button class="white-button" href="/login"><i class="fa-solid fa-circle-user" style="font-size: 24px;"></i>
-                <p class="buttext">Login</p>
-            </button>
-        </a>
+            <a href="/login">
+                <button class="white-button">
+                    <i class="fa-solid fa-circle-user" style="font-size: 24px;"></i>
+                    <p class="buttext">Войти</p>
+                </button>
+            </a>
         </div>
+        
     </div>
 
     </div>
     <div class="rslogocontainer">
- <img src="img/rossotrudnichestvo-gray.png" class="spin-logo" width="1100" height="1100">
-</div> 
+        <img src="img/rossotrudnichestvo-gray.png" class="spin-logo" width="1100" height="1100">
+    </div>
     <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary yoa382" style="
       z-index: 8000;
       position: absolute;
@@ -72,7 +83,7 @@
             <a href="#" onclick="hideSidebar()" style="color: white !important;">
                 <i class="fa-regular fa-circle-xmark" style="font-size: 20px; margin-top: 4px;"></i>
             </a>
-            <span class="fs-5 fw-semibold" style="color:white !important; margin-left: 20px;">Sonuçlar:</span>
+            <span class="fs-5 fw-semibold" style="color:white !important; margin-left: 20px;">Резултаты:</span>
         </div>
         <div class="list-group liste-grup list-group-flush border-bottom scrollarea scroll" id="results-list"></div>
     </div>
@@ -80,7 +91,7 @@
 
 
 
-
+    <div id=“modal” class=“”> <div class=“modal-content”> <span class=“close”>×</span> <div id=“modal-header”></div> <div id=“modal-body”></div> </div> </div>
 
     <div class="map-container" id="map" draggable="true">
         <div class="wrapper">
@@ -91,9 +102,9 @@
                         rightLongitude="44.819234" bottomLatitude="35.806126"></amcharts:ammap>
                 </defs>
                 <g>
-                    <path id="01" data-city-name="adana" title="Adana" class="city"
+                    <path id="01" data-city-name="adana" title="Аdana" class="city"
                         d="M445.07,206.98l-1,1.29l-1.19,5.33l-0.91,2.23l-0.88,1.49l-1.5,1.21l-0.55,0.81l0.2,0.53l2.09,0.32l0.95,0.81l-0.24,1l-1.76,1.56l-0.8,1.41l0.26,1.03l1.8,2.29l0.43,2.09l-0.18,1.5l-0.98,2.1l-2.89,2.9l0,0l-1.31,0.3l-4.18,2.51l-2.15,3.22l-1.29,4.13l-0.47,4.38l0.44,3.09l1.52,4.45l0.38,3.03l-1.24,9.1l0,0l-1.39,1.2l-0.84,1.44l-0.18,1.19l0.43,1.39l0,0l-2.15,2.17l-1.38,0.85l-1.01,1.84l-1.87,1.45l-0.3,0.75l-2.27,1.53l-1.47,-0.19l-1.72,0.58l-0.59,-0.45l-1.21,0.01l-1.64,1.05l-0.84,1.74l0.91,-0.42l-0.22,0.47l0.23,0.71l0.52,-1.15l0,-0.31l-0.48,-0.03l0.23,-0.38l0.78,-0.18l0.03,0.51l0.25,0.14l-0.16,0.87l1.81,-0.22l0.2,-0.21l-0.42,-0.16v-0.37l1.08,0.75l-3.2,2.23l-0.46,0.78l-0.31,2.37l-0.69,0.64l-1.37,0.56l-0.48,0.77l-0.42,0.14l-0.5,-0.44l-1.84,-0.49l-2.79,-0.34l-1.03,0.32v0.63l-2.8,1.72l-0.22,-0.62l-1.08,-0.7l-12.54,-7.43l-1.87,-0.65l-2.25,0.03l0,0l1,-0.91l0,0l-0.02,-0.25l0.27,0.21l0,0l0.41,-0.32l0.13,0.32l0.35,-0.1l0.16,-0.96l0.2,0.42l0.81,-0.44l0.49,0.03l0.53,0.47l-0.28,-0.69l0.19,-0.13l0.8,0.57l0.02,-1.1l0.31,0.02l0.38,0.66l1.29,-1.71l0.82,0.75l1.27,-0.45l0.29,0.06l0.17,0.51l0.29,-0.13l-0.21,-0.27l0.79,-0.46l0.23,-0.82l-0.67,-3.38l-0.01,-3.39l-0.88,-3.1l0.1,-2.1l-0.57,-0.79l-0.6,-0.57l-2.41,-1.2l-1.69,-0.01l-0.29,-1.3l-0.63,-1.02l-0.99,-0.63l-0.86,-0.14l-0.34,-0.5l0.02,-1.54l0.53,-0.84l1.49,-1.05l-0.08,-1.23l-1.15,-1.89l-1.6,-1.36l0.2,-0.51l-1.31,-0.29l-2.23,-3.07l0.14,-2.21l-0.84,-1.45l0,0l0.05,-0.49l2.58,-1.6l-0.76,-1.45l1,-1.36l0.77,-3.56l0.04,-2.24l0.75,-1.26l1.5,-0.35l2.29,1.04l1.27,-0.08l0.83,-0.71l2.45,-4.29l1.31,-1.13l3.23,-1.58l0,0l4.93,1.27l0.51,0.63l1.32,-0.34l0.48,0.27l0.43,1.17l0.36,0.24l1.1,-0.25l4.33,0.72l1.71,-0.04l1.23,-2.07l-0.22,-1.66l0.67,-2.1l0.84,-5.59l0.67,-0.42l1.5,-0.26l1.1,-0.74l0.89,-0.85l1.19,-1.89l1.13,-0.44l1.15,-1.51l5.24,-1.63l1.34,-0.85l1.37,-2.25l1.15,-4.28l2,-1.95l1.65,-3.03l3.83,-1.42l1.29,-0.08l2.7,2.06l1.68,2.64L445.07,206.98z" />
-                    <path id="02" data-city-name="adiyaman" title="Adıyaman" class="city"
+                    <path id="02" data-city-name="adiyaman" title="Аdıyaman" class="city"
                         d="M557.34,211.25L558.12,211.39L559.49,210.17L560.65,210.16L561.08,210.93L562.03,211.67L562.28,213.06L562.11,213.75L561.21,214.69L560.51,217.44L559.72,217.75L559.49,218.42L558.17,219.93L558.17,219.93L557.54,220.17L556.48,219.99L555.13,220.54L554.89,221.03L553.85,221.67L553.58,223.26L552.53,225.31L551.43,225.49L550.31,226.26L551.07,226.96L550.92,227.76L550.33,228.34L550.5,230.03L548.37,230L547.44,230.61L547.13,231.21L547.28,231.63L548.95,231.03L549.63,231.16L549.68,233.75L547.98,234.29L547.7,234.7L547.76,235.72L546.51,236.56L545.12,237.06L544.23,236.76L543.84,237.09L544,238.23L544.82,238.43L545.38,238.88L545.26,239.12L541.28,240.32L536.98,240.81L533.57,243.51L530.27,246.67L528.2,247.75L523.38,247.96L522.71,248.47L521.34,248.27L520.25,249.99L518.98,249.5L518.28,249.65L517.9,250.44L517.94,251.32L517.42,251.74L517.13,251.72L517.04,251.17L515.94,251.22L513.61,249.68L513.61,249.68L511.88,248.58L507.98,247.29L504.17,246.94L501.32,247.31L500.39,247.03L498.7,245.18L496.71,245.45L494.37,246.53L493.67,246.44L492.58,245.69L492.58,245.69L491.49,243.73L491.16,242.02L489.67,242.06L488.33,241.56L487.24,241.6L487.12,240.53L486.56,239.64L487.35,238.92L487.32,238.36L487.9,237.67L487.73,236.19L488.17,234.54L489.03,233.33L490.73,231.87L490.98,228.52L490.58,227.29L491.65,226.46L493.19,225.99L493.86,225.42L495.32,222.79L495.32,222.79L496.01,223.22L496.18,223.72L495.74,225.54L498.9,224.82L499.27,225.19L499.51,226.82L499.94,227.31L500.59,227.36L501.44,226.33L501.98,226.18L504.02,226.81L506.37,227.12L508.78,226.43L511.05,226.22L512.5,224.19L514.49,223.73L515.06,222.49L514.3,220.37L514.35,219.18L513,217.35L513.39,216.26L515.7,215L520.59,213.52L521.5,212.6L522.23,211.24L523.65,210.7L527.74,210.43L528.89,211.26L531.06,212.12L532.28,213.08L533.63,213.31L534.34,214.44L536.39,214.83L537.9,216.54L539.47,216.83L541.69,219.08L543.31,219.58L547.87,217.81L549.17,216.92L551.77,216.19L552.22,214.81L554.89,213.46z" />
                     <path id="03" data-city-name="afyonkarahisar" title="Afyonkarahisar" class="city"
                         d="M197.93,155.58L199.44,155.37L201.16,156.17L202.76,159.15L203.21,161.1L206.07,162.46L207.48,163.73L208.76,165.53L209.29,165.73L209.89,165.34L210.12,162.41L211.01,161.7L215.39,162.05L218.17,162.74L219.13,162.58L219.95,161.48L220.1,160.57L217.09,158.56L216.68,157.99L216.86,157.4L217.61,157.11L219.32,157.21L222.53,158.57L223.09,156.97L223.53,156.7L225.05,156.63L225.28,155.21L226.24,153.52L227.08,152.68L227.64,152.6L231.5,155.27L233.14,155.17L234.49,154.27L235.07,154.26L236.63,156.31L239.56,158.44L239.85,158.89L240.17,161.3L241.11,161.77L242.68,161.77L243.67,162.28L244.78,164.61L245.44,164.99L245.44,164.99L246.6,167.25L251.9,168.16L252.35,168.52L252.46,169.08L252.07,169.67L249.95,169.61L249.02,170.12L247.37,169.98L246.51,170.29L247.3,171.78L246.62,173.28L246.97,176.2L246.8,177.3L245.53,180.76L245.19,181.39L243.92,182.27L243.41,183.6L243.85,185.37L245.64,186.33L246.08,187.39L245.31,188.02L243.74,188.42L233.78,195.4L233.36,196.51L233.25,198.13L232.57,199.15L232.57,199.15L231.28,199.36L229.41,196.4L227.67,194.79L226.87,194.4L225.18,194.32L221.3,195.28L218.19,198.31L215.86,199.01L214.49,199.98L212.31,204.29L211.4,205.32L208.23,206.74L205.47,209.07L204.44,209.06L203.15,209.8L201.3,209.73L200.02,210.43L197.23,212.86L196.35,214.7L194.99,215.8L193.19,217.98L192.32,218.56L190.63,218.91L189.17,219.83L188.1,221.03L187.43,222.36L186.04,223.81L186.24,227.34L184.29,230.41L184.09,231.67L184.09,231.67L184.09,231.67L184.09,231.67L179.26,231.21L176.29,231.34L176.29,231.34L174.76,230.5L173.71,230.42L172.13,229.28L169.77,228.14L168.61,226.97L167.88,225.93L167.25,223.92L167.58,221.08L170.67,217.93L172.81,216.2L174.84,212.93L175.53,212.55L179.23,212.71L181.13,209.61L181.98,208.88L183.69,208.17L183.89,207.36L182.61,203.08L181.44,200.62L178.8,199.52L177.66,197.74L175.9,197.54L174.53,195.98L172.89,195.96L170.82,194.56L170.82,194.56L173.21,192.28L175.51,188.43L177.06,187.54L177.11,186.42L176.01,185.24L176.06,183.52L176.48,182.83L177.49,182.31L178.28,181.06L179.99,180.14L180.61,178.72L180.59,177.56L180.59,177.56L181.56,177.53L182.67,176.97L183.73,175.91L185.3,173.47L188.15,172.29L189,170.28L190.61,168.38L190.03,165.56L190.32,164.35L189.92,162.46L190.13,161.23L191.57,159.96L193.48,159.04L195.49,159.14L196.21,158.92L197.37,157.35z" />
@@ -264,26 +275,26 @@
         <div id=maincontainerfilter align="center">
             <h1
                 style="margin-left: 20px;color:white; text-shadow: 2px 2px 5px #222; float:left; margin-top:28px; font-size: 18px;">
-                Filter: </h1>
+                Фильтр: </h1>
             <div class="list-group list-group-flush ">
                 <div style="padding: 8px;">
                     <select class="form-select form-select-sm" id="hizmet-select" aria-label=".form-select-sm example">
-                        <option selected>Hizmet Alanı Seçiniz</option>
-                        <option value="1">Dernekler</option>
-                        <option value="2">Kültür Merkezleri</option>
-                        <option value="3">Konsolosluklar</option>
-                        <option value="4">Eğitim Kurumu (İlk Öğretim, Orta Öğretim)</option>
-                        <option value="5">Eğitim Kurumu (Yüksek Öğretim)</option>
+                        <option selected>Выберите зону обслуживания</option>
+                        <option value="1">Организации</option>
+                        <option value="2">культурные центры</option>
+                        <option value="3">Консульства</option>
+                        <option value="4">Школы</option>
+                        <option value="5">Вузы</option>
                     </select>
 
                     <select class="form-select form-select-sm" id="il-select" aria-label=".form-select-sm example">
-                        <option value="">Şehir Seçiniz - Haritadan Seçilebilir</option>
+                        <option value="">Выбериыте город</option>
                     </select>
 
                     <div class="btn-group">
                         <button type="button" class="btn btn-success filtrele"
                             onclick="resetSelected(); filterResults(); showSidebar(); ">
-                            Filter!
+                            Найти!
                         </button>
                     </div>
 
@@ -322,3 +333,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"
     integrity="sha512-VK2zcvntEufaimc+efOYi622VN5ZacdnufnmX7zIhCPmjhKnOi9ZDMtg1/ug5l183f19gG1/cBstPO4D8N/Img=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script>
+    // Set the maximum width for mobile version
+    const maxMobileWidth = 720; // Adjust this value as needed
+    
+    // Check the device width and redirect if necessary
+    function checkMobileRedirect() {
+      const deviceWidth = window.innerWidth || document.documentElement.clientWidth;
+      
+      if (deviceWidth <= maxMobileWidth) {
+        window.location.href = '/m';
+      }
+    }
+  
+    // Call the function initially and on window resize
+    window.onload = checkMobileRedirect;
+    window.addEventListener('resize', checkMobileRedirect);
+  </script>

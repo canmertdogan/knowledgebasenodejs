@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js'></script> 
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css' />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
         integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -33,25 +34,28 @@
 
 
         <div class="buttoncontainer">
-
-            <button class="white-button" onclick="resetSelected(); filterResults(); showSidebar(); "><i
-                    class="fa-solid fa-hand-holding-heart" style="font-size: 24px;"></i>
-                <p class="buttext">Charities</p>
+            <button class="white-button" id="charities-button" value="1" onclick="buttonClicked(this); resetSelected(); filterResults(); showSidebar();">
+                <i class="fa-solid fa-hand-holding-heart" style="font-size: 24px;"></i>
+                <p class="buttext">Орг.</p>
             </button>
-            <button class="white-button"><i class="fa-solid fa-flag" style="font-size: 24px;"></i>
-                <p class="buttext">Consulates</p>
+            <button class="white-button" id="consulates-button" value="3" onclick=" buttonClicked(this);resetSelected(); filterResults(); showSidebar();">
+                <i class="fa-solid fa-flag" style="font-size: 24px;"></i>
+                <p class="buttext">Консулствы</p>
             </button>
-            <button class="white-button"><i class="fa-solid fa-school" style="font-size: 24px;"></i>
-                <p class="buttext">Schools</p>
+            <button class="white-button" id="schools-button" value="2" onclick=" buttonClicked(this); resetSelected(); filterResults(); showSidebar();">
+                <i class="fa-solid fa-school" style="font-size: 24px;"></i>
+                <p class="buttext">Школы</p>
             </button>
-            <button class="white-button"><i class="fa-solid fa-graduation-cap" style="font-size: 24px;"></i>
-                <p class="buttext">Universities</p>
+            <button class="white-button" id="universities-button" value="5" onclick=" buttonClicked(this); resetSelected(); filterResults(); showSidebar();">
+                <i class="fa-solid fa-graduation-cap" style="font-size: 24px;"></i>
+                <p class="buttext">Вузы</p>
             </button>
-           <form action="/logout" method="get">
-            <button type="submit" class="white-button"><i class="fa-solid fa-circle-user" style="font-size: 24px;"></i>
-                <p class="buttext">Logout</p>
-            </button>
-           </form>
+            <form action="/logout">
+                <button class="white-button">
+                    <i class="fa-solid fa-circle-user" style="font-size: 24px;"></i>
+                    <p class="buttext">Выйти</p>
+                </form>
+            </a>
         </div>
     </div>
 
@@ -87,7 +91,7 @@
         <div class="CountContainer">
             <h1
                 style="margin-left: 16px;color:white; text-shadow: 2px 2px 5px #222; float:left; margin-top:16px; margin-bottom: 1px;font-size: 24px; margin-left: 30px;">
-                Data Stats:</h1>
+                Статистика Данных:</h1>
 
             <br><br>
             <div class="tabContainer">
@@ -95,11 +99,10 @@
 
                     <i class="fa-solid fa-flag"
                         style="margin-top: 50px; margin-left: 75px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1;"></i>
-                    <p style="color:white; font-weight:600; margin-top: 14px; margin-left: 18px; float:left;">Total
-                        Consulates:
+                    <p style="color:white; font-weight:600; margin-top: 14px; margin-left: 18px; float:left;">Все Консулствы:
                     </p>
                     <p id="counter1"
-                        style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">
+                        style="color:white; font-size: 36px; font-weight:400; margin-top: -6px; margin-right: 24px; float:right;">
                         <i class="fa-solid fa-spinner fa-spin-pulse" style="color: #ffffff;"></i></p>
                 </div>
 
@@ -107,11 +110,10 @@
 
                     <i class="fa-solid fa-hand-holding-heart"
                         style="margin-top: 50px; margin-left: 60px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1; "></i>
-                    <p style="color:white; font-weight:600; margin-top: 14px; margin-left: 18px; float:left;">Total
-                        Charities:
+                    <p style="color:white; font-weight:600; margin-top: 14px; margin-left: 18px; float:left;">Все Организации:
                     </p>
                     <p
-                    id="counter2"style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">
+                    id="counter2"style="color:white; font-size: 36px; font-weight:400; margin-top: -6px; margin-right: 24px; float:right;">
                     <i class="fa-solid fa-spinner fa-spin-pulse" style="color: #ffffff;"></i></p>
                 </div>
 
@@ -119,8 +121,8 @@
 
                     <i class="fa-solid fa-school"
                         style="margin-top: 50px; margin-left: 43px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1;"></i>
-                    <p style="color:white; font-weight:600; margin-top: 14px; margin-left: 18px; float:left;">Total
-                        Schools:
+                    <p style="color:white; font-weight:600; margin-top: 14px; margin-left: 18px; float:left;">
+                        Все школы:
                     </p>
                     <p
                         id="counter3" style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">
@@ -131,12 +133,12 @@
 
                     <i class="fa-solid fa-graduation-cap"
                         style="margin-top: 50px; margin-left: 45px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1;"></i>
-                    <p style="color:white; font-weight:600; margin-top: 14px; margin-left: 18px; float:left;">Total
-                        Universities:
+                    <p style="color:white; font-weight:600; margin-top: 14px; margin-left: 18px; float:left;">
+                        Все вузы:
                     </p>
                     <p
                     id="counter4" style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">
-                        660</p>
+                    <i class="fa-solid fa-spinner fa-spin-pulse" style="color: #ffffff;"></i></p>
                 </div>
             </div>
 
@@ -146,7 +148,7 @@
         <div class="OptionContainer">
             <h1
                 style="margin-left: 16px;color:white; text-shadow: 2px 2px 5px #222; float:left; margin-top:16px; margin-bottom: 1px;font-size: 24px; margin-left: 30px;">
-                Operation Menu:</h1>
+                Меню Действий:</h1>
 
             <br><br>
             <div class="tabContainer">
@@ -157,8 +159,8 @@
                         style="margin-top: 50px; margin-left: 60px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1;"></i>
 
                     <p
-                        style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">
-                        Add User</p>
+                        style="color:white; font-size: 22px; font-weight:400; margin-top: 5px; margin-right: 24px; float:right;">
+                        Доб. пользователья</p>
                 </div>
             </a>
                 <a href="/tools">
@@ -168,8 +170,8 @@
                         style="margin-top: 50px; margin-left: 60px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1; "></i>
 
                     <p
-                        style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">
-                        Site Tools</p>
+                        style="color:white; font-size: 22px; font-weight:400; margin-top: 5px; margin-right: 24px; float:right;">
+                        Инструменты сайта</p>
                 </div>
             </a>
             <a href="/add">
@@ -179,8 +181,8 @@
                         style="margin-top: 50px; margin-left: 43px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1;"></i>
 
                     <p
-                        style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">
-                        Add Org.</p>
+                        style="color:white; font-size: 22px; font-weight:400; margin-top: 5px; margin-right: 24px; float:right;">
+                        Доб. Орг.</p>
                 </div>
             </a>
             <a href="/remove">
@@ -190,8 +192,8 @@
                         style="margin-top: 50px; margin-left: 70px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1;"></i>
 
                     <p
-                        style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">
-                        Delete Org.</p>
+                        style="color:white; font-size: 22px; font-weight:400; margin-top: 5px; margin-right: 24px; float:right;">
+                        Удалить Орг.</p>
                 </div>
             </div>
         </a>
