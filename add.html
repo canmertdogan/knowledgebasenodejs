@@ -21,9 +21,9 @@
 <body>
 
     <div id=mainbar>
-        <h1
+      <a href="/admin"><h1
             style="margin-left: 16px;color:white; text-shadow: 2px 2px 5px #222; float:left; margin-top:28px; font-size: 20px;">
-            АДМИНИСТРАТОР - РФ</h1>
+            АДМИНИСТРАТОР - РФ</h1></a>
         <div id=maincontainer>
             <input type=search id="search-input" placeholder="Search for locations in Turkiye (⏎)" /><button
                 class="btn btn-primary" id="search-button" onclick="resetSelected(); showSidebar()">
@@ -47,7 +47,7 @@
             <button class="white-button"><i class="fa-solid fa-graduation-cap" style="font-size: 24px;"></i>
                 <p class="buttext">Universities</p>
             </button>
-           <form action="/login" method="get">
+            <form action="/logout" method="get">
             <button type="submit" class="white-button"><i class="fa-solid fa-circle-user" style="font-size: 24px;"></i>
                 <p class="buttext">Logout</p>
             </button>
@@ -84,54 +84,56 @@
 
 
 
-        <div class="CountContainer">
-            <h1
-                style="margin-left: 16px;color:white; text-shadow: 2px 2px 5px #222; float:left; margin-top:16px; margin-bottom: 1px;font-size: 24px; margin-left: 30px;">
-                Add Organization:</h1>
-
-            <br><br> <br>
-
-            <select class="form-select form-select-sm" id="hizmet-select" aria-label=".form-select-sm example">
-                <option selected>Hizmet Alanı Seçiniz</option>
+        <form method="post" action="/add-organization">
+            <div class="CountContainer">
+              <h1 style="margin-left: 16px;color:white; text-shadow: 2px 2px 5px #222; float:left; margin-top:16px; margin-bottom: 1px;font-size: 24px; margin-left: 30px;">
+                Add Organization:
+              </h1>
+          
+              <br><br> <br>
+          
+              
+              <div class="tabContainer" style="float:left;">
+                <div class="input-group mb-3" style=" width: 500px; ">
+                  <input type="text" class="form-control" placeholder="Title of Organization" aria-label="Title of Organization" name="title" required>
+                </div>
+                <div class="input-group mb-3" style="width: 500px;">
+                    <input type="text" class="form-control" placeholder="Address of Organization" aria-label="Address of Organization" name="address" required>
+                  </div>
+                  
+                <div class="input-group mb-3" style=" width: 500px; margin-right: 36px;">
+                  <input type="email" class="form-control" placeholder="E-Mail" aria-label="E-Mail" name="email" required>
+                </div>
+                <div class="input-group mb-3" style=" width: 500px; margin-right: 36px;">
+                  <input type="text" class="form-control" placeholder="Phone Number" aria-label="Phone Number" name="phone" required>
+                </div>
+                <select class="form-select form-select-sm" id="hizmet-select" aria-label=".form-select-sm example" name="hizmet" style="margin-left: 0px !important;">
+                <option selected disabled>Hizmet Alanı Seçiniz</option>
                 <option value="1">Dernekler</option>
                 <option value="2">Kültür Merkezleri</option>
                 <option value="3">Konsolosluklar</option>
                 <option value="4">Eğitim Kurumu (İlk Öğretim, Orta Öğretim)</option>
                 <option value="5">Eğitim Kurumu (Yüksek Öğretim)</option>
-            </select>
-
-            
-            <div class="tabContainer"style="float:left;" >
-                <div class="input-group mb-3" style=" width: 500px; ">
-                    
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                        aria-describedby="basic-addon1">
-                </div>
-                <div class="input-group mb-3" style=" width: 500px; margin-right: 36px;">
-                    
-                    <input type="text" class="form-control" placeholder="Password" aria-label="Username"
-                        aria-describedby="basic-addon1">
-                </div>
-                <div class="input-group mb-3" style=" width: 500px; margin-right: 36px;">
-                   
-                    <input type="text" class="form-control" placeholder="Verification Code" aria-label="Username"
-                        aria-describedby="basic-addon1">
-
-                </div>
-            
-                <button type="button" class="btn btn-warning" style="float:left; padding-left: 60px; padding-right: 60px; margin-bottom: 10px;">Add Organization</button>
+              </select>
+          
+              <select style="margin-left: 0px !important;" class="form-select form-select-sm" id="il-select" aria-label=".form-select-sm example" name="city">
+                <option value="">Şehir Seçiniz - Haritadan Seçilebilir</option>
+              </select>
+                <button type="submit" class="btn btn-warning" style="float:left; padding-left: 60px; padding-right: 60px; margin-bottom: 10px;">
+                  Add Organization
+                </button>
                 <br>
-                
-            </div>
-
-            <div class="tabContainer" style="float:left;">
-            <div class="mb-3" style="float:left">
-                
-                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="More Information"rows="3" style="color:white; height: 150px; width:500px; margin-right: 6px;"></textarea>
+          
               </div>
-
+          
+              <div class="tabContainer" style="float:left;">
+                <div class="mb-3" style="float:left">
+                  <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="More Information" rows="3" style="color:black; height: 375px; width:500px; margin-right: 6px;" name="information"></textarea>
+                </div>
+              </div>
             </div>
-        </div>
+          </form>
+          
 
         <div class="OptionContainer">
             <h1
@@ -154,7 +156,7 @@
                 <a href="/tools">
                 <div class="opmenu">
 
-                    <i class="fa-solid fa-hand-holding-heart"
+                    <i class="fa-solid fa-gear"
                         style="margin-top: 50px; margin-left: 60px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1; "></i>
 
                     <p
@@ -177,8 +179,8 @@
             <a href="/remove">
                 <div class="opmenu">
 
-                    <i class="fa-solid fa-graduation-cap"
-                        style="margin-top: 50px; margin-left: 45px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1;"></i>
+                    <i class="fa-solid fa-trash"
+                        style="margin-top: 50px; margin-left: 70px; margin-bottom: 10px;font-size: 128px;  color:white; opacity: 0.1;"></i>
 
                     <p
                         style="color:white; font-size: 36px; font-weight:400; margin-top: -2px; margin-right: 24px; float:right;">

@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700');
 
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 .site-header {
   margin-bottom: 40px;
 }
@@ -126,7 +126,7 @@
 body{
 	margin:0px;
 	background: #07074A !important;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Ubuntu', sans-serif;
 	overflow-x: hidden;
   
 	

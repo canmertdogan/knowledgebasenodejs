@@ -1,34 +1,45 @@
 {
-    "centers": [
-      { 
-        
-        "name": "Russian Consulate General in Istanbul",
-        "address": "Mesrutiyet Mah., Istiklal Cad. No:221, 34433 Beyoglu, Istanbul, Turkey",
-        "phone": "+90 212 293 55 00",
-        "email": "consulate.ist@mid.ru",
-        "il_adi": "Istanbul",
-        "plaka_kodu": "34"
-      },
-      {
-        "name": "Russian Consulate General in Antalya",
-        "address": "Kaleici Mah., Atatürk Cad. No:34, 07100 Muratpasa, Antalya, Turkey",
-        "phone": "+90 242 241 49 00",
-        "email": "consulate.antalya@mid.ru",
-        "plaka_kodu": "07"
-      },
-      {
-        "name": "Russian Consulate General in Trabzon",
-        "address": "Kocamankaya Mah., Maraş Cad. No:11, 61040 Ortahisar, Trabzon, Turkey",
-        "phone": "+90 462 321 35 00",
-        "email": "consulate.trabzon@mid.ru",
-        "plaka_kodu": "61"
-      },
-      {
-        "name": "Russian Consulate General in Ankara",
-        "address": "199 Gazi Mustafa Kemal Bulvari, Kavaklıdere, 06680 Çankaya/Ankara, Turkey",
-        "phone": "+90 312 426 7555",
-        "email": "rusconsankara@mid.ru",
-        "plaka_kodu":"06"
-      }
-    ]
-  }
+  "centers": [
+    {
+      "name": "Russian Consulate General in Istanbul",
+      "address": "Mesrutiyet Mah., Istiklal Cad. No:221, 34433 Beyoglu, Istanbul, Turkey",
+      "phone": "+90 212 293 55 00",
+      "email": "consulate.ist@mid.ru",
+      "il_adi": "Istanbul",
+      "plaka_kodu": "34"
+    },
+    {
+      "name": "Russian Consulate General in Antalya",
+      "address": "Kaleici Mah., Atatürk Cad. No:34, 07100 Muratpasa, Antalya, Turkey",
+      "phone": "+90 242 241 49 00",
+      "email": "consulate.antalya@mid.ru",
+      "plaka_kodu": "07",
+      "aciklama": ""
+    },
+    {
+      "name": "Russian Consulate General in Trabzon",
+      "address": "Kocamankaya Mah., Maraş Cad. No:11, 61040 Ortahisar, Trabzon, Turkey",
+      "phone": "+90 462 321 35 00",
+      "email": "consulate.trabzon@mid.ru",
+      "plaka_kodu": "61",
+      "aciklama": ""
+    },
+    {
+      "name": "Russian Consulate General in Ankara",
+      "address": "199 Gazi Mustafa Kemal Bulvari, Kavaklıdere, 06680 Çankaya/Ankara, Turkey",
+      "phone": "+90 312 426 7555",
+      "email": "rusconsankara@mid.ru",
+      "plaka_kodu": "06",
+      "aciklama": ""
+    },
+    {
+      "name": "Bilal Teke Ülkü Ocağı Yöneticisi",
+      "address": "Şişli İstanbul",
+      "phone": "+90 535 553 0324",
+      "email": "mbilalteke@gmail.com",
+      "il_adi": "29",
+      "plaka_kodu": "29",
+      "aciklama": "bilal teke siber güvenlik uzmanı ve taşak akıtıyorken camblyde am göt meme açıyor"
+    }
+  ]
+}

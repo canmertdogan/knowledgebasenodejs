@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-
+const bcrypt = require("bcrypt");
 // Middleware to parse form data
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -40,18 +40,62 @@ app.get("/", (req, res) => {
 });
 
 // Login route handling form submission (POST)
-app.post("/login", (req, res) => {
-  const { username, password, verification } = req.body;
-
-  // Check if the username and password are correct
-  if (username === 'admin' && password === 'password' && verification === '222444') {
-    // Set the user as authenticated in the session
-    req.session.authenticated = true;
-    res.redirect('/admin'); // Redirect to the admin page after successful login
+app.use((req, res, next) => {
+  if (req.url === "/users.json") {
+    // Prevent direct access to users.json
+    res.status(403).send("Access Forbidden");
   } else {
-    res.send('Invalid username or password');
+    next();
   }
 });
+
+app.post("/login", (req, res) => {
+  const { email, password, verification } = req.body;
+
+  const usersData = getUsersData();
+  const user = usersData.users.find(u => u.email === email);
+
+  if (user) {
+    if (bcrypt.compareSync(password, user.passwordhash)) {
+      if (bcrypt.compareSync(verification, user.verificationcodehash)) {
+        req.session.authenticated = true;
+        res.redirect("/admin");
+      } else {
+        res.send("Invalid verification code");
+      }
+    } else {
+      res.send("Invalid email or password");
+    }
+  } else {
+    res.send("User not found");
+  }
+});
+
+
+
+ // Logic to read the users.json file and extract user data
+// View engine setup
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+
+// Define the /user route
+app.get("/user", (req, res) => {
+  const usersData = getUsersData();
+  res.render("user", { usersData });
+});
+
+
+function getUsersData() {
+  const filePath = path.join(__dirname, "users.json");
+  const data = fs.readFileSync(filePath, "utf8");
+  return JSON.parse(data);
+}
+
+// Hash the username
+function hashUsername(username) {
+  return bcrypt.hashSync(username, 10);
+}
+
 
 // Login route for serving the login page (GET)
 app.get("/login", (req, res) => {
@@ -71,72 +115,93 @@ app.get("/user", (req, res) => {
   }
 });
 
-// Route to handle the removal of JSON entry by ID
-app.delete("/remove-entry/:json/:id", (req, res) => {
-  const jsonFile = req.params.json;
-  const idToRemove = req.params.id;
-  var filePath = path.join(__dirname, "public", "json", `${jsonFile}.json`);
 
-  fs.readFile(filePath, "utf-8", function (error, content) {
-    if (error) {
-      console.error("Error reading the file:", error);
-      res.status(500).send("Error reading the file");
-    } else {
-      try {
-        const data = JSON.parse(content);
-        const newData = data.centers.filter((entry) => entry.id !== idToRemove);
-        const updatedJSON = JSON.stringify({ centers: newData });
+// Read and parse JSON data
+const okullarData = JSON.parse(fs.readFileSync('public/json/okullar.json', 'utf-8'));
+const konsolosluklarData = JSON.parse(fs.readFileSync('public/json/konsolosluklar.json', 'utf-8'));
+const universitelerData = JSON.parse(fs.readFileSync('public/json/universiteler.json', 'utf-8'));
+const kulturmerkezleriData = JSON.parse(fs.readFileSync('public/json/kulturmerkezleri.json', 'utf-8'));
+const derneklerData = JSON.parse(fs.readFileSync('public/json/dernekler.json', 'utf-8'));
 
-        fs.writeFile(filePath, updatedJSON, "utf-8", function (error) {
-          if (error) {
-            console.error("Error writing to the file:", error);
-            res.status(500).send("Error writing to the file");
-          } else {
-            res.status(200).send("Entry removed successfully");
-          }
-        });
-      } catch (parseError) {
-        console.error("Error parsing JSON:", parseError);
-        res.status(500).send("Error parsing JSON");
-      }
+// Combine data from different sources
+const finalData = [
+  ...okullarData.centers,
+  ...konsolosluklarData.centers,
+  ...universitelerData.centers,
+  ...kulturmerkezleriData.centers,
+  ...derneklerData.centers
+];
+
+
+
+app.post("/add-user", (req, res) => {
+  const { username, password, verification } = req.body;
+
+  // Hash the password and verification code using bcrypt
+  const saltRounds = 10;
+  bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
+    if (err) {
+      console.error("Error hashing password:", err);
+      return res.status(500).json({ success: false, message: "Error hashing password" });
     }
+
+    bcrypt.hash(verification, saltRounds, (err, hashedVerification) => {
+      if (err) {
+        console.error("Error hashing verification code:", err);
+        return res.status(500).json({ success: false, message: "Error hashing verification code" });
+      }
+
+      // Logic to add the user to the users.json file
+      const newUser = {
+        email: username,
+        passwordhash: hashedPassword,
+        verificationcodehash: hashedVerification
+      };
+
+      // Read the existing data from users.json
+      const filePath = path.join(__dirname, "./users.json");
+      const data = fs.readFileSync(filePath, "utf8");
+      const jsonData = JSON.parse(data);
+
+      // Add the new user to the data array
+      jsonData.users.push(newUser);
+
+      // Write the updated data back to users.json
+      fs.writeFileSync(filePath, JSON.stringify(jsonData, null, 2), "utf8");
+
+      res.send({ success: true, message: "User added successfully" });
+    });
   });
 });
 
-// Read the JavaScript code for "remove.html" from the server-side
-fs.readFile("public/js/remove.js", "utf-8", function (err, jsContent) {
-  if (err) {
-    console.error("Error reading the JS file:", err);
-  } else {
-    // Append the JavaScript code to the "/remove" route
-    app.get("/remove", (req, res) => {
-      const htmlContent = `
-      <div class="CountContainer">
-        <h1 style="margin-left: 16px;color:white; text-shadow: 2px 2px 5px #222; float:left; margin-top:16px; margin-bottom: 1px;font-size: 24px; margin-left: 30px;">
-          Data Stats:</h1>
 
-        <br><br><br>
-        <div id="data-table" class="tabContainer">
-          <table class="table table-striped table-dark" style="width: 1075px;">
-            <thead>
-              <tr>
-                <th scope="col">City Code</th>
-                <th scope="col">Organization</th>
-                <th scope="col">Phone Number</th>
-                <th scope="col">E-Mail</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </div>
-      <script>${jsContent}</script>
-      `;
-      res.send(htmlContent);
-    });
+
+
+app.post("/remove-user", (req, res) => {
+  const { email } = req.body;
+
+  // Read the existing data from users.json
+  const filePath = path.join(__dirname, "users.json");
+  const data = fs.readFileSync(filePath, "utf8");
+  const jsonData = JSON.parse(data);
+
+  // Find the index of the user with the provided ID
+  const userIndex = jsonData.users.findIndex(user => user.email);
+
+  if (userIndex !== "") {
+    // Remove the user from the array
+    jsonData.users.splice(userIndex, 1);
+
+    // Write the updated data back to users.json
+    fs.writeFileSync(filePath, JSON.stringify(jsonData, null, 2), "utf8");
+
+    res.json({ success: true, message: "User removed successfully" });
+  } else {
+    res.status(404).json({ success: false, message: "User not found" });
   }
 });
+
+
 // Admin route for serving the admin page (GET)
 app.get("/admin", (req, res) => {
   if (req.session.authenticated) {
@@ -160,16 +225,143 @@ app.get("/add", (req, res) => {
   }
 });
 
-app.get("/remove", (req, res) => {
-  if (req.session.authenticated) {
-    fs.readFile("remove.html", "utf-8", function (err, html) {
-      res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
-      res.end(html);
-    });
-  } else {
-    res.redirect("/login"); // Redirect to the login page if not authenticated
+const cityDataFilePath = path.join(__dirname, 'public', 'json', 'citydata-turkey.json');
+let cityData = [];
+
+fs.readFile(cityDataFilePath, 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error loading city data:', err);
+    return;
+  }
+
+  try {
+    cityData = JSON.parse(data).iller;
+ 
+  } catch (parseError) {
+    console.error('Error parsing city data:', parseError);
   }
 });
+
+app.post('/add-organization', (req, res) => {
+  const { hizmet, city, address, title, email, phone, information } = req.body;
+
+  if (!hizmet || !city || !title || !email  || !address || !phone || !information) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  const hizmetOptions = {
+    '1': 'dernekler.json',
+    '2': 'kulturmerkezleri.json',
+    '3': 'konsolosluklar.json',
+    '4': 'okullar.json',
+    '5': 'universiteler.json'
+  };
+
+  const jsonFileName = hizmetOptions[hizmet];
+  if (!jsonFileName) {
+    return res.status(400).json({ error: 'Invalid hizmet selection' });
+  }
+
+  const jsonFilePath = path.join(__dirname, 'public', 'json', jsonFileName);
+
+  fs.readFile(jsonFilePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading JSON file:', err);
+      return res.status(500).json({ error: 'Error reading JSON file' });
+    }
+
+    let jsonData = JSON.parse(data);
+    
+    const selectedCity = cityData.find(item => item.plaka_kodu === city);
+
+    if (!selectedCity) {
+      console.log('Received City:', city);
+      return res.status(400).json({ error: 'Invalid city selection' });
+      
+    }
+
+    const newEntry = {
+      name: title,
+      address: address,
+      phone: phone,
+      email: email,
+      il_adi: city,
+      plaka_kodu: selectedCity.plaka_kodu,
+      aciklama: information,
+    };
+
+    jsonData.centers.push(newEntry);
+
+    fs.writeFile(jsonFilePath, JSON.stringify(jsonData, null, 2), 'utf8', (err) => {
+      if (err) {
+        console.error('Error writing to JSON file:', err);
+        return res.status(500).json({ error: 'Error writing to JSON file' });
+      }
+
+      setTimeout(() => {
+        return res.status(200).json({ message: 'Organization added successfully' });
+      }, 3000);
+    });
+  });
+});
+
+// Define an array to hold the data from all JSON files
+let allCenters = [];
+
+const jsonFiles = ['./public/json/okullar.json', './public/json/konsolosluklar.json', './public/json/universiteler.json', './public/json/kulturmerkezleri.json', './public/json/dernekler.json'];
+jsonFiles.forEach((filePath) => {
+  const data = require(filePath);
+  allCenters = allCenters.concat(data.centers);
+});
+
+app.get('/remove', (req, res) => {
+  res.render('remove', { data: allCenters });
+});
+
+app.post('/remove/:centerName', (req, res) => {
+  const centerNameToRemove = req.params.centerName;
+  
+  // Find the index of the center to remove
+  const indexToRemove = allCenters.findIndex(center => center.name === centerNameToRemove);
+  
+  if (indexToRemove !== -1) {
+    // Determine the source JSON file and remove the entry
+    const sourceJsonFile = jsonFiles.find((filePath) => {
+      const data = require(filePath);
+      return data.centers.some((center) => center.name === centerNameToRemove);
+    });
+
+    if (sourceJsonFile) {
+      const sourceData = require(sourceJsonFile);
+      const updatedCenters = sourceData.centers.filter(center => center.name !== centerNameToRemove);
+      
+      // Update the JSON file with the updated data
+      fs.writeFileSync(sourceJsonFile, JSON.stringify({ centers: updatedCenters }, null, 2));
+      
+      // Remove the entry from the allCenters array
+      allCenters.splice(indexToRemove, 1);
+    }
+  }
+
+  if (centerNameToRemove) {
+    const indexToRemove = finalData.findIndex(center => center.name === centerNameToRemove);
+    if (indexToRemove !== -1) {
+      finalData.splice(indexToRemove, 1);
+    }
+  }
+  
+  res.redirect('/remove');
+});
+
+
+
+
+
+
+
+
+
+
 
 app.get("/tools", (req, res) => {
   if (req.session.authenticated) {
@@ -189,9 +381,47 @@ app.get("/logout", (req, res) => {
     if (err) {
       console.error("Error destroying session:", err);
     }
-    res.redirect("/login");
+    res.redirect("/");
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.get("/citydata", (req, res) => {
   var filePath = path.join(__dirname, "public", "json", "citydata-turkey.json");

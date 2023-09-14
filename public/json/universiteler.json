@@ -1,40 +1,26 @@
 {
-    "centers": [
-      {
-        "name": "Russian-Turkish Cultural Center",
-        "address": "Mesrutiyet Mah., Istiklal Cad. No:221, 34433 Beyoglu, Istanbul, Turkey",
-        "phone": "+90 212 293 55 00",
-        "email": "info@rusturk.org",
-        "il_adi": "Istanbul",
-        "plaka_kodu": "34"
-      },
-      {
-        "name": "Russian-Turkish Business Association",
-        "address": "Kaleici Mah., Atatürk Cad. No:34, 07100 Muratpasa, Antalya, Turkey",
-        "phone": "+90 242 241 49 00",
-        "email": "info@rusturkbiz.com",
-        "plaka_kodu": "07"
-      },
-      {
-        "name": "Russian-Turkish Friendship Association",
-        "address": "Kocamankaya Mah., Maraş Cad. No:11, 61040 Ortahisar, Trabzon, Turkey",
-        "phone": "+90 462 321 35 00",
-        "email": "info@rusturkdostluk.com",
-        "plaka_kodu" : "61"
-      },
-      {
-        "name": "Russian-Turkish Chamber of Commerce",
-        "address": "Kemeralti Mah., 883 Sokak No:10, 35220 Konak, Izmir, Turkey",
-        "phone": "+90 232 484 63 00",
-        "email": "info@rusturkticaret.com",
-        "plaka_kodu": "35"
-      },
-      {
-        "name": "Russian-Turkish Cultural and Humanitarian Foundation",
-        "address": "Emek Mah., 172 Sokak No:4, 06520 Çankaya, Ankara, Turkey",
-        "phone": "+90 312 433 07 00",
-        "email": "info@rusturkkultur.com",
-        "plaka_kodu": "06"
-      }
-    ]
-  }
+  "centers": [
+    {
+      "name": "Russian-Turkish Cultural Center",
+      "address": "Mesrutiyet Mah., Istiklal Cad. No:221, 34433 Beyoglu, Istanbul, Turkey",
+      "phone": "+90 212 293 55 00",
+      "email": "info@rusturk.org",
+      "il_adi": "Istanbul",
+      "plaka_kodu": "34"
+    },
+    {
+      "name": "Russian-Turkish Friendship Association",
+      "address": "Kocamankaya Mah., Maraş Cad. No:11, 61040 Ortahisar, Trabzon, Turkey",
+      "phone": "+90 462 321 35 00",
+      "email": "info@rusturkdostluk.com",
+      "plaka_kodu": "61"
+    },
+    {
+      "name": "Russian-Turkish Cultural and Humanitarian Foundation",
+      "address": "Emek Mah., 172 Sokak No:4, 06520 Çankaya, Ankara, Turkey",
+      "phone": "+90 312 433 07 00",
+      "email": "info@rusturkkultur.com",
+      "plaka_kodu": "06"
+    }
+  ]
+}
