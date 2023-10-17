@@ -112,14 +112,14 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/user", (req, res) => {
-  if (req.session.authenticated) {
+ if (req.session.authenticated) {
     fs.readFile("user.html", "utf-8", function (err, html) {
       res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
       res.end(html);
     });
-  } else {
-    res.redirect("/login"); // Redirect to the login page if not authenticated
-  }
+ } else {
+   res.redirect("/login"); // Redirect to the login page if not authenticated
+ }
 });
 
 

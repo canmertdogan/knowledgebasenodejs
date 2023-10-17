@@ -2,8 +2,13 @@
   "users": [
     {
       "email": "admin@rs.gov",
-      "passwordhash": "$2b$10$tKLXpUk/S0Hvu5Uaz1YLvu4IjsLg.kZdlQfJItsk68qHKdd4dlp4y",
-      "verificationcodehash": "$2b$10$AbUfFTDVIDoAO6.XPpp9wuEpMkMTh8Qv/WQcuN4E9xwBw8A/r4SEe"
+      "passwordhash": "$2b$10$cmV4LqYQ9uncn8S7Ex14vOy.BgHLKOr73YKlEov8sk6m9k5k8eWJu",
+      "verificationcodehash": "$2b$10$1z/RPOUHUxr6jM/9vn5ste7K/WuvhHUtEtV7Cw9dypiKcUYVgQXSC"
+    },
+    {
+      "email": "1@1.c",
+      "passwordhash": "$2b$10$adVG0.l3vQzEsw5sdSC0YO/oQlZPwJlpzIugsSnhpwhzbwVnizHGO",
+      "verificationcodehash": "$2b$10$V3duHmrkNnfHnPhcD4zN.eC0v4CRl5eiA7y9Hb2p2EJ.3wgvZpcrO"
     }
   ]
 }
