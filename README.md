@@ -1,7 +1,11 @@
 # NodeJS Mapped Phonebook with Admin Panel
 
 YASAL BİLDİRİ: Bu proje bir taslak çalışmasıdır ve Rossotrudnichestvo Ajansı ile herhangi bir bağlantısı bulunmamaktadır. 
+
+![Imgur](https://i.imgur.com/dKUB8A3.jpg)
+![Imgur](https://i.imgur.com/hMknDzs.jpg)
 ![Imgur](https://i.imgur.com/ln27Fun.jpg)
+
 ### İlerleme
 
 +**Filtreleme sistemi düzgün çalışıyor ve iyileştirildi.** 
