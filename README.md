@@ -1,5 +1,7 @@
 # NodeJS Mapped Phonebook with Admin Panel
 
+YASAL BİLDİRİ: Bu proje bir taslak çalışmasıdır ve Rossotrudnichestvo Ajansı ile herhangi bir bağlantısı bulunmamaktadır. 
+
 ### İlerleme
 
 +**Filtreleme sistemi düzgün çalışıyor ve iyileştirildi.** 
