@@ -1,5 +1,4 @@
-# Ludmla Hanım Proje
-Ludmila hanım'ın projesi için git reposu.
+# NodeJS Mapped Phonebook with Admin Panel
 
 ### İlerleme
 
